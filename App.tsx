@@ -8,13 +8,16 @@ import GetInvolvedPage from './pages/GetInvolvedPage';
 import ContactPage from './pages/ContactPage';
 import StoriesPage from './pages/StoriesPage';
 import Footer from './components/Footer';
+import ErrorBoundary from './components/ErrorBoundary';
+import { PageType } from './types';
 
-const App = () => {
-  const [currentPage, setCurrentPage] = useState('home');
+const App: React.FC = () => {
+  const [currentPage, setCurrentPage] = useState<PageType>('home');
 
-  const handleNavigate = (page) => {
-    setCurrentPage(page);
-    window.scrollTo(0, 0);
+  const handleNavigate = (page: string) => {
+    const validPage = page as PageType;
+    setCurrentPage(validPage);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 
   const renderPage = () => {
@@ -39,11 +42,13 @@ const App = () => {
   };
 
   return (
-    <div className="bg-gray-100 text-gray-800">
-      <Header onNavigate={handleNavigate} currentPage={currentPage} />
-      {renderPage()}
-      <Footer onNavigate={handleNavigate} />
-    </div>
+    <ErrorBoundary>
+      <div className="bg-gray-100 text-gray-800">
+        <Header onNavigate={handleNavigate} currentPage={currentPage} />
+        {renderPage()}
+        <Footer onNavigate={handleNavigate} />
+      </div>
+    </ErrorBoundary>
   );
 };
 

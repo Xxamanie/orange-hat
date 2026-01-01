@@ -1,5 +1,9 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
+import { NavigationProps, ContactFormData } from "../types";
+import { submitContactForm } from "../utils/api";
+import { validateContactForm } from "../utils/validation";
+import { APP_CONFIG, SOCIAL_LINKS } from "../utils/constants";
 
 // --- SVG Icon Components ---
 const MapPin = ({ size = 24 }) => (
@@ -29,14 +33,62 @@ const YoutubeIcon = () => (
 );
 
 
-const ContactPage = ({ onNavigate }: { onNavigate: (page: string) => void }) => {
+const ContactPage: React.FC<NavigationProps> = ({ onNavigate }) => {
+  const [formData, setFormData] = useState<ContactFormData>({
+    name: '',
+    email: '',
+    subject: '',
+    message: '',
+  });
+  const [errors, setErrors] = useState<Record<string, string>>({});
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
+  const [submitMessage, setSubmitMessage] = useState('');
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({ ...prev, [name]: value }));
+    
+    // Clear error when user starts typing
+    if (errors[name]) {
+      setErrors(prev => ({ ...prev, [name]: '' }));
+    }
+  };
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    setSubmitted(true);
-    setTimeout(() => setSubmitted(false), 5000);
-    (e.target as HTMLFormElement).reset();
+    
+    // Validate form
+    const validation = validateContactForm(formData);
+    if (!validation.isValid) {
+      setErrors(validation.errors);
+      return;
+    }
+
+    setIsSubmitting(true);
+    setErrors({});
+
+    try {
+      const response = await submitContactForm(formData);
+      
+      if (response.success) {
+        setSubmitted(true);
+        setSubmitMessage(response.message);
+        setFormData({ name: '', email: '', subject: '', message: '' });
+        
+        // Reset success message after 5 seconds
+        setTimeout(() => {
+          setSubmitted(false);
+          setSubmitMessage('');
+        }, 5000);
+      } else {
+        setSubmitMessage('Something went wrong. Please try again.');
+      }
+    } catch (error) {
+      setSubmitMessage('Network error. Please check your connection and try again.');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -62,21 +114,21 @@ const ContactPage = ({ onNavigate }: { onNavigate: (page: string) => void }) => 
                 <div className="bg-orangeHat/10 text-orangeHat p-3 rounded-full flex-shrink-0"><MapPin /></div>
                 <div>
                   <h3 className="font-semibold">Our Location</h3>
-                  <p className="text-gray-600 text-sm">Hwolshe, Jos, Plateau State, Nigeria</p>
+                  <p className="text-gray-600 text-sm">{APP_CONFIG.address}</p>
                 </div>
               </div>
               <div className="flex items-start gap-4">
                 <div className="bg-orangeHat/10 text-orangeHat p-3 rounded-full flex-shrink-0"><Mail /></div>
                 <div>
                   <h3 className="font-semibold">Email Us</h3>
-                  <a href="mailto:info@orangehat.org" className="text-gray-600 text-sm hover:underline">info@orangehat.org</a>
+                  <a href={`mailto:${APP_CONFIG.email}`} className="text-gray-600 text-sm hover:underline">{APP_CONFIG.email}</a>
                 </div>
               </div>
               <div className="flex items-start gap-4">
                 <div className="bg-orangeHat/10 text-orangeHat p-3 rounded-full flex-shrink-0"><Phone /></div>
                 <div>
                   <h3 className="font-semibold">Call Us</h3>
-                  <p className="text-gray-600 text-sm">+234 123 456 7890 (Placeholder)</p>
+                  <p className="text-gray-600 text-sm">{APP_CONFIG.phone}</p>
                 </div>
               </div>
             </div>
@@ -99,16 +151,90 @@ const ContactPage = ({ onNavigate }: { onNavigate: (page: string) => void }) => 
           <motion.div initial={{ opacity: 0, x: 40 }} whileInView={{ opacity: 1, x: 0 }} transition={{ duration: 0.8 }} viewport={{ once: true }}>
             <h2 className="text-3xl font-bold mb-6">Send Us a Message</h2>
             <form onSubmit={handleSubmit} className="space-y-4">
-              <input type="text" placeholder="Full Name" required className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orangeHat" />
-              <input type="email" placeholder="Email Address" required className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orangeHat" />
-              <input type="text" placeholder="Subject" required className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orangeHat" />
-              <textarea placeholder="Your message..." required rows="5" className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orangeHat"></textarea>
-              <button type="submit" className="bg-orangeHat text-white px-8 py-3 rounded-full font-semibold hover:bg-orange-600 transition w-full">Send Message</button>
+              <div>
+                <input 
+                  type="text" 
+                  name="name"
+                  value={formData.name}
+                  onChange={handleInputChange}
+                  placeholder="Full Name" 
+                  required 
+                  className={`w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-orangeHat ${
+                    errors.name ? 'border-red-500' : 'border-gray-300'
+                  }`}
+                />
+                {errors.name && <p className="error-text">{errors.name}</p>}
+              </div>
+              
+              <div>
+                <input 
+                  type="email" 
+                  name="email"
+                  value={formData.email}
+                  onChange={handleInputChange}
+                  placeholder="Email Address" 
+                  required 
+                  className={`w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-orangeHat ${
+                    errors.email ? 'border-red-500' : 'border-gray-300'
+                  }`}
+                />
+                {errors.email && <p className="error-text">{errors.email}</p>}
+              </div>
+              
+              <div>
+                <input 
+                  type="text" 
+                  name="subject"
+                  value={formData.subject}
+                  onChange={handleInputChange}
+                  placeholder="Subject" 
+                  required 
+                  className={`w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-orangeHat ${
+                    errors.subject ? 'border-red-500' : 'border-gray-300'
+                  }`}
+                />
+                {errors.subject && <p className="error-text">{errors.subject}</p>}
+              </div>
+              
+              <div>
+                <textarea 
+                  name="message"
+                  value={formData.message}
+                  onChange={handleInputChange}
+                  placeholder="Your message..." 
+                  required 
+                  rows={5}
+                  className={`w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-orangeHat ${
+                    errors.message ? 'border-red-500' : 'border-gray-300'
+                  }`}
+                ></textarea>
+                {errors.message && <p className="error-text">{errors.message}</p>}
+              </div>
+              
+              <button 
+                type="submit" 
+                disabled={isSubmitting}
+                className="bg-orangeHat text-white px-8 py-3 rounded-full font-semibold hover:bg-orange-600 transition w-full disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+              >
+                {isSubmitting ? (
+                  <>
+                    <div className="spinner"></div>
+                    Sending...
+                  </>
+                ) : (
+                  'Send Message'
+                )}
+              </button>
             </form>
+            
             {submitted && (
               <p className="text-green-600 flex items-center gap-2 mt-4">
-                <CheckCircle /> Thank you for your message! We'll get back to you soon.
+                <CheckCircle /> {submitMessage}
               </p>
+            )}
+            
+            {submitMessage && !submitted && (
+              <p className="text-red-600 mt-4">{submitMessage}</p>
             )}
           </motion.div>
         </div>
@@ -122,7 +248,7 @@ const ContactPage = ({ onNavigate }: { onNavigate: (page: string) => void }) => 
         </p>
         <div className="flex justify-center space-x-4">
             <a
-              href="https://facebook.com"
+              href={SOCIAL_LINKS.facebook}
               target="_blank"
               rel="noopener noreferrer"
               className="bg-white/20 p-3 rounded-full hover:bg-white/30 transition"
@@ -131,7 +257,7 @@ const ContactPage = ({ onNavigate }: { onNavigate: (page: string) => void }) => 
               <FacebookIcon />
             </a>
             <a
-              href="https://instagram.com"
+              href={SOCIAL_LINKS.instagram}
               target="_blank"
               rel="noopener noreferrer"
               className="bg-white/20 p-3 rounded-full hover:bg-white/30 transition"
@@ -140,7 +266,7 @@ const ContactPage = ({ onNavigate }: { onNavigate: (page: string) => void }) => 
               <InstagramIcon />
             </a>
             <a
-              href="https://youtube.com"
+              href={SOCIAL_LINKS.youtube}
               target="_blank"
               rel="noopener noreferrer"
               className="bg-white/20 p-3 rounded-full hover:bg-white/30 transition"

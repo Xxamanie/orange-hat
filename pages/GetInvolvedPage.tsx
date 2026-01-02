@@ -41,7 +41,7 @@ const GetInvolvedPage = ({ onNavigate }) => {
           Get Involved
         </motion.h1>
         <p className="text-gray-600 max-w-2xl mx-auto text-lg">
-          There are many ways to join the Orange Hat story — volunteer, partner, or donate to support children and families in need.
+          Join the Orange Hat story — volunteer or partner with us to support children and families in our community.
         </p>
       </section>
 
@@ -83,29 +83,11 @@ const GetInvolvedPage = ({ onNavigate }) => {
         </div>
       </section>
 
-      {/* Donate Section */}
-      <section className="py-20 px-6 md:px-12 max-w-6xl mx-auto grid md:grid-cols-2 gap-12 items-center" id="donate">
-        <motion.div initial={{ opacity: 0, x: -40 }} whileInView={{ opacity: 1, x: 0 }} transition={{ duration: 0.8 }} viewport={{ once: true }}>
-          <img src="https://picsum.photos/seed/donate/800/600" alt="Donate to Orange Hat" className="rounded-2xl shadow-md object-cover w-full h-96" />
-        </motion.div>
-        <motion.div initial={{ opacity: 0, x: 40 }} whileInView={{ opacity: 1, x: 0 }} transition={{ duration: 0.8 }} viewport={{ once: true }}>
-          <div className="flex items-center gap-3 mb-6"><HandHeart size={40} className="text-orangeHat" /><h2 className="text-3xl font-bold">Support With a Donation</h2></div>
-          <p className="text-gray-700 mb-6">Every contribution helps sustain education, feeding, and mentorship programs for children and women. Your giving makes hope tangible.</p>
-          <form onSubmit={(e) => handleSubmit(e, "Donate")} className="space-y-4">
-            <input type="number" placeholder="Donation amount (₦)" required className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orangeHat" />
-            <input type="text" placeholder="Full name" required className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orangeHat" />
-            <input type="email" placeholder="Email address" required className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orangeHat" />
-            <button type="submit" className="bg-orangeHat text-white px-8 py-3 rounded-full font-semibold hover:bg-orange-600 transition">Donate Now</button>
-          </form>
-          {submitted && formType === "Donate" && (<p className="text-green-600 flex items-center gap-2 mt-4"><CheckCircle size={18} /> Thank you! Your kindness fuels our mission.</p>)}
-        </motion.div>
-      </section>
-
       {/* CTA */}
       <section className="bg-orangeHat text-white text-center py-16 px-6">
         <h2 className="text-3xl font-bold mb-4">Together, We Create Change</h2>
         <p className="text-orange-100 mb-8 max-w-2xl mx-auto">
-          Your time, skills, and generosity are what make Orange Hat thrive. Join us today.
+          Your time, skills, and partnership are what make Orange Hat thrive. Join us today.
         </p>
         <a href="#" onClick={(e) => handleNavClick(e, 'contact')} className="bg-white text-orangeHat px-8 py-3 rounded-full font-semibold hover:bg-orange-100 transition">
           Contact Us

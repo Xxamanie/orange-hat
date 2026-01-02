@@ -1,23 +1,5 @@
-import React from "react";
 import { motion } from "framer-motion";
-
-const programs = [
-  {
-    title: "After School Adventure",
-    desc: "Engaging learning activities that inspire hope, healing, and wholeness through literature for children on their educational journey.",
-    image: "https://picsum.photos/seed/program1/400/300",
-  },
-  {
-    title: "Lovin’ Oven Bakery",
-    desc: "Empowering young women with bakery and business training — building confidence, professionalism, and community faith.",
-    image: "https://picsum.photos/seed/program2/400/300",
-  },
-  {
-    title: "Rooted House",
-    desc: "A safe home for young women in crisis, offering life skills, education, and a nurturing community for transformation.",
-    image: "https://picsum.photos/seed/program3/400/300",
-  },
-];
+import { programs } from "../data/programs";
 
 const Programs = () => {
   return (
@@ -38,32 +20,36 @@ const Programs = () => {
         <div className="w-24 h-1 bg-orangeHat mx-auto mt-4 mb-12 rounded-full"></div>
 
         {/* Program Cards */}
-        <div className="grid md:grid-cols-3 gap-10">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-8">
           {programs.map((prog, i) => (
             <motion.div
-              key={i}
+              key={prog.id}
               initial={{ opacity: 0, y: 40 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.5 }}
-              transition={{ delay: i * 0.2, duration: 0.7 }}
+              transition={{ delay: i * 0.1, duration: 0.7 }}
               className="bg-white shadow-md rounded-2xl overflow-hidden group hover:shadow-xl transition-shadow duration-300"
             >
               <div className="overflow-hidden">
                 <div
-                  className="h-56 bg-cover bg-center group-hover:scale-105 transition-transform duration-300"
+                  className="h-48 bg-cover bg-center group-hover:scale-105 transition-transform duration-300"
                   style={{ backgroundImage: `url(${prog.image})` }}
                   role="img"
                   aria-label={prog.title}
                 ></div>
               </div>
-              <div className="p-6 text-left">
-                <h3 className="text-xl font-semibold text-gray-800 mb-3">
+              <div className="p-5 text-left">
+                <h3 className="text-lg font-semibold text-gray-800 mb-2">
                   {prog.title}
                 </h3>
-                <p className="text-gray-600 text-sm mb-4">{prog.desc}</p>
+                <p className="text-gray-600 text-sm mb-3 line-clamp-3">{prog.description}</p>
+                <div className="flex justify-between items-center text-xs text-gray-500 mb-3">
+                  <span className="bg-gray-100 px-2 py-1 rounded">{prog.category}</span>
+                  <span>{prog.targetAge}</span>
+                </div>
                 <a
                   href="#"
-                  className="text-orangeHat font-medium hover:underline"
+                  className="text-orangeHat font-medium hover:underline text-sm"
                 >
                   Learn More →
                 </a>

@@ -30,7 +30,7 @@ const Media = () => {
           Media & Updates
         </motion.h1>
         <p className="text-gray-600 max-w-2xl mx-auto">
-          Explore the latest from our community — stories, events, and impact moments shared across our social media channels.
+          Explore the latest from our community — events, updates, and impact moments shared across our social media channels.
         </p>
       </section>
 
@@ -94,7 +94,7 @@ const Media = () => {
           viewport={{ once: true }}
         >
           <h2 className="text-3xl font-semibold flex items-center gap-3 mb-6">
-            <YoutubeIcon className="text-red-600" /> YouTube Stories
+            <YoutubeIcon className="text-red-600" /> YouTube Videos
           </h2>
           <div className="w-full aspect-video rounded-xl overflow-hidden shadow-md">
             <iframe

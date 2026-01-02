@@ -40,13 +40,6 @@ const actions = [
     btnText: "Become a Partner",
     color: "bg-orangeHat",
   },
-  {
-    title: "Support With a Donation",
-    desc: "Every contribution — big or small — helps sustain education, training, and hope for many in need.",
-    icon: <HandHeart />,
-    btnText: "Donate Now",
-    color: "bg-orangeHat",
-  },
 ];
 
 const GetInvolved = ({ onNavigate }) => {
@@ -72,7 +65,7 @@ const GetInvolved = ({ onNavigate }) => {
         <div className="w-24 h-1 bg-orangeHat mx-auto mt-4 mb-12 rounded-full"></div>
 
         {/* Actions Grid */}
-        <div className="grid md:grid-cols-3 gap-10">
+        <div className="grid md:grid-cols-2 gap-10 max-w-4xl mx-auto">
           {actions.map((item, i) => (
             <motion.div
               key={i}

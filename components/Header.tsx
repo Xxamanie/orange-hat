@@ -44,7 +44,6 @@ const Header = ({ onNavigate, currentPage }) => {
     { name: "About", page: "about" },
     { name: "Programs", page: "programs" },
     { name: "Get Involved", page: "get-involved" },
-    { name: "Stories", page: "stories" },
     { name: "Media", page: "media" },
     { name: "Contact", page: "contact" },
   ];
@@ -80,13 +79,13 @@ const Header = ({ onNavigate, currentPage }) => {
           ))}
         </nav>
 
-        {/* Donate Button */}
+        {/* Support Button */}
         <a
           href="#"
-          onClick={(e) => { e.preventDefault(); handleNavClick('get-involved')}}
+          onClick={(e) => { e.preventDefault(); handleNavClick('support')}}
           className="hidden md:inline-block bg-orangeHat text-white px-6 py-2 rounded-full hover:bg-orange-600 transition-colors"
         >
-          Donate Now
+          Support Us
         </a>
 
         {/* Mobile Menu Toggle */}
@@ -116,10 +115,10 @@ const Header = ({ onNavigate, currentPage }) => {
             ))}
             <a
               href="#"
-              onClick={(e) => { e.preventDefault(); handleNavClick('get-involved')}}
+              onClick={(e) => { e.preventDefault(); handleNavClick('support')}}
               className="bg-orangeHat text-white px-6 py-2 rounded-full hover:bg-orange-600 transition-colors"
             >
-              Donate Now
+              Support Us
             </a>
           </nav>
         </div>

@@ -1,6 +1,25 @@
-# Orange Hat Website
+# Orange Hat Childcare Foundation Website
 
-A modern, responsive website for Orange Hat - an organization dedicated to empowering children and communities in Nigeria through education, mentorship, and sustainable development programs.
+A modern, responsive website for Orange Hat Childcare Foundation - an organization dedicated to creating a safe space of discovery where children and their caregivers can grow spiritually, relationally, and academically to positively impact their world.
+
+## 🌟 About Orange Hat
+
+**Vision**: To create a safe space of discovery where children and their caregivers can grow spiritually, relationally, and academically to positively impact their world.
+
+**Founded**: 2018 in a small shop in Hwolshe, Jos
+**NGO Registration**: 2024 in Plateau State
+**Current Location**: COCIN Church Jiyep
+
+### Our Programs
+
+- **After School Adventure**: 3 days/week engaging learning activities through literature
+- **Holiday Orange Hat**: 5 impactful weeks serving 200+ children with joyful, exploratory learning
+- **Lovin' Oven Bakery**: Training center empowering young women through community and faith
+- **Rooted House**: Home for young women in crisis with skill training and discipleship
+- **Hwolemen**: Mature men mentoring young men through meaningful relationships
+
+### Our Team
+Over 20 dedicated staff and volunteers who truly see, pray, and encourage every child and young adult.
 
 ## 🌟 Features
 

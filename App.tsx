@@ -6,7 +6,7 @@ import AboutPage from './pages/AboutPage';
 import ProgramsPage from './pages/ProgramsPage';
 import GetInvolvedPage from './pages/GetInvolvedPage';
 import ContactPage from './pages/ContactPage';
-import StoriesPage from './pages/StoriesPage';
+import SupportPage from './pages/SupportPage';
 import Footer from './components/Footer';
 import ErrorBoundary from './components/ErrorBoundary';
 import { PageType } from './types';
@@ -32,10 +32,10 @@ const App: React.FC = () => {
         return <ProgramsPage onNavigate={handleNavigate} />;
       case 'get-involved':
         return <GetInvolvedPage onNavigate={handleNavigate} />;
+      case 'support':
+        return <SupportPage onNavigate={handleNavigate} />;
       case 'contact':
         return <ContactPage onNavigate={handleNavigate} />;
-      case 'stories':
-        return <StoriesPage onNavigate={handleNavigate} />;
       default:
         return <HomePage onNavigate={handleNavigate} />;
     }

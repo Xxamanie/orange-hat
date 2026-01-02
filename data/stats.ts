@@ -4,97 +4,115 @@ export const impactStats: Stat[] = [
   {
     id: 'children-reached',
     label: 'Children Reached',
-    value: '2,500+',
-    description: 'Children directly impacted through our programs',
-  },
-  {
-    id: 'communities-served',
-    label: 'Communities Served',
-    value: '15',
-    description: 'Communities across Nigeria where we operate',
-  },
-  {
-    id: 'volunteers',
-    label: 'Active Volunteers',
-    value: '150+',
-    description: 'Dedicated volunteers supporting our mission',
-  },
-  {
-    id: 'programs-running',
-    label: 'Active Programs',
-    value: '6',
-    description: 'Ongoing programs addressing various needs',
+    value: '200+',
+    description: 'Children served through Holiday Orange Hat program',
   },
   {
     id: 'years-active',
     label: 'Years of Service',
-    value: '8',
-    description: 'Years of dedicated service to communities',
+    value: '6',
+    description: 'Years of dedicated service since 2018',
   },
   {
-    id: 'partnerships',
-    label: 'Partner Organizations',
-    value: '25+',
-    description: 'Organizations collaborating with us',
+    id: 'staff-volunteers',
+    label: 'Staff & Volunteers',
+    value: '20+',
+    description: 'Dedicated staff and volunteers supporting our mission',
+  },
+  {
+    id: 'programs-running',
+    label: 'Active Programs',
+    value: '5',
+    description: 'Core programs serving the community',
+  },
+  {
+    id: 'holiday-weeks',
+    label: 'Holiday Program Weeks',
+    value: '5',
+    description: 'Impactful weeks of holiday learning',
+  },
+  {
+    id: 'weekly-sessions',
+    label: 'After School Days',
+    value: '3',
+    description: 'Days per week of After School Adventure',
   },
 ];
 
-export const financialStats: Stat[] = [
+export const programStats: Stat[] = [
   {
-    id: 'funds-raised',
-    label: 'Funds Raised',
-    value: '₦50M+',
-    description: 'Total funds raised for programs',
+    id: 'after-school-frequency',
+    label: 'After School Adventure',
+    value: '3x/week',
+    description: 'Regular after-school programming',
   },
   {
-    id: 'program-efficiency',
-    label: 'Program Efficiency',
-    value: '85%',
-    description: 'Of funds go directly to programs',
+    id: 'holiday-impact',
+    label: 'Holiday Program',
+    value: '5 weeks',
+    description: 'Intensive holiday learning periods',
   },
   {
-    id: 'average-donation',
-    label: 'Average Donation',
-    value: '₦5,000',
-    description: 'Average individual donation amount',
-  },
-];
-
-export const educationStats: Stat[] = [
-  {
-    id: 'scholarships',
-    label: 'Scholarships Awarded',
-    value: '200+',
-    description: 'Educational scholarships provided',
+    id: 'bakery-training',
+    label: "Lovin' Oven Bakery",
+    value: 'Young Women',
+    description: 'Empowerment through bakery training',
   },
   {
-    id: 'schools-supported',
-    label: 'Schools Supported',
-    value: '30',
-    description: 'Schools receiving our support',
+    id: 'rooted-house',
+    label: 'Rooted House',
+    value: 'Crisis Support',
+    description: 'Home for young women in crisis',
   },
   {
-    id: 'literacy-rate',
-    label: 'Literacy Improvement',
-    value: '40%',
-    description: 'Average literacy improvement in our programs',
+    id: 'hwolemen',
+    label: 'Hwolemen',
+    value: 'Mentorship',
+    description: 'Men mentoring young men',
   },
 ];
 
-export function getStatsByCategory(category: 'impact' | 'financial' | 'education'): Stat[] {
+export const organizationStats: Stat[] = [
+  {
+    id: 'founded',
+    label: 'Founded',
+    value: '2018',
+    description: 'Started in a small shop in Hwolshe, Jos',
+  },
+  {
+    id: 'ngo-status',
+    label: 'NGO Registration',
+    value: '2024',
+    description: 'Registered as NGO in Plateau State',
+  },
+  {
+    id: 'location',
+    label: 'Current Location',
+    value: 'COCIN Church Jiyep',
+    description: 'Operating from church-provided building',
+  },
+  {
+    id: 'future-location',
+    label: 'Future Plans',
+    value: 'Hwolshe Property',
+    description: 'Planning new facility in Hwolshe',
+  },
+];
+
+export function getStatsByCategory(category: 'impact' | 'programs' | 'organization'): Stat[] {
   switch (category) {
     case 'impact':
       return impactStats;
-    case 'financial':
-      return financialStats;
-    case 'education':
-      return educationStats;
+    case 'programs':
+      return programStats;
+    case 'organization':
+      return organizationStats;
     default:
       return impactStats;
   }
 }
 
 export function getStatById(id: string): Stat | undefined {
-  const allStats = [...impactStats, ...financialStats, ...educationStats];
+  const allStats = [...impactStats, ...programStats, ...organizationStats];
   return allStats.find(stat => stat.id === id);
 }

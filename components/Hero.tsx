@@ -42,17 +42,17 @@ const Hero = ({ onNavigate }) => {
         <div className="mt-10 flex flex-col md:flex-row items-center justify-center gap-4">
           <a
             href="#"
-            onClick={(e) => handleNavClick(e, 'get-involved')}
+            onClick={(e) => handleNavClick(e, 'programs')}
             className="bg-orangeHat text-white px-8 py-3 rounded-full text-lg font-medium hover:bg-orange-600 transition-colors"
           >
-            Get Involved
+            Our Programs
           </a>
           <a
             href="#"
             onClick={(e) => handleNavClick(e, 'get-involved')}
             className="border-2 border-white px-8 py-3 rounded-full text-lg font-medium hover:bg-white hover:text-orangeHat transition-all"
           >
-            Donate Now
+            Get Involved
           </a>
         </div>
       </motion.div>

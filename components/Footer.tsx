@@ -32,9 +32,8 @@ const Footer = ({ onNavigate }) => {
             <h1 className="text-2xl font-semibold">Orange Hat</h1>
           </div>
           <p className="text-orange-50 text-sm leading-relaxed">
-            Building hope through love, learning, and community.  
-            We nurture children and caregivers to grow spiritually, relationally,
-            and academically.
+            Creating safe spaces where children and their caregivers can grow spiritually, 
+            relationally, and academically to positively impact their world.
           </p>
         </div>
 
@@ -45,7 +44,6 @@ const Footer = ({ onNavigate }) => {
             <li><a href="#" onClick={(e) => handleNavClick(e, 'about')} className="hover:underline">About Us</a></li>
             <li><a href="#" onClick={(e) => handleNavClick(e, 'programs')} className="hover:underline">Programs</a></li>
             <li><a href="#" onClick={(e) => handleNavClick(e, 'get-involved')} className="hover:underline">Get Involved</a></li>
-            <li><a href="#" onClick={(e) => handleNavClick(e, 'stories')} className="hover:underline">Stories</a></li>
             <li><a href="#" onClick={(e) => handleNavClick(e, 'contact')} className="hover:underline">Contact</a></li>
           </ul>
         </div>
@@ -54,7 +52,7 @@ const Footer = ({ onNavigate }) => {
         <div>
           <h2 className="text-lg font-semibold mb-4">Contact Us</h2>
           <p className="text-sm text-orange-50 mb-4">
-            Hwolshe, Jos, Plateau State, Nigeria  
+            COCIN Church Jiyep, Hwolshe, Jos, Plateau State, Nigeria  
             <br /> Email:{" "}
             <a href="mailto:info@orangehat.org" className="underline hover:text-white">
               info@orangehat.org

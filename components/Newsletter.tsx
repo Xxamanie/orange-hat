@@ -115,7 +115,7 @@ const Newsletter: React.FC = () => {
           Stay Connected
         </h2>
         <p className="text-gray-600 mb-8 text-sm md:text-base">
-          Subscribe to receive inspiring updates, stories of transformation, and
+          Subscribe to receive inspiring updates, community news, and
           upcoming events from the Orange Hat community.
         </p>
 

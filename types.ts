@@ -68,4 +68,4 @@ export interface FormSubmissionResponse {
   message: string;
 }
 
-export type PageType = 'home' | 'about' | 'programs' | 'get-involved' | 'contact' | 'stories' | 'media';
+export type PageType = 'home' | 'about' | 'programs' | 'get-involved' | 'support' | 'contact' | 'media';

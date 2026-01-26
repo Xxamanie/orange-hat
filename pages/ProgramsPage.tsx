@@ -1,4 +1,4 @@
-import React from "react";
+import { MouseEvent } from "react";
 import { motion } from "framer-motion";
 
 // --- Inline SVG Icons ---
@@ -11,43 +11,72 @@ const HeartHandshake = ({ size = 40 }) => (
 const BookOpen = ({ size = 40 }) => (
     <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
 );
-const Play = ({ size = 28 }) => (
-    <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polygon points="5 3 19 12 5 21 5 3"/></svg>
-);
+
 
 
 const programs = [
   {
     title: "Lovin’ Oven Initiative",
     desc: "A skill development program that teaches baking and catering to young women and caregivers — building both confidence and a source of income.",
-    image: "https://picsum.photos/seed/program-lovinoven/800/600",
-    story: "“I never believed I could earn from my passion for baking — until Lovin’ Oven trained me. Now I bake for schools and events in my community.” – Grace, Trainee",
-    video: "https://www.youtube.com/embed/1a2b3c4d5e",
+    image: "/images/lovin' oven.jpg",
+    story: "“I never believed I could earn from my passion for baking — until Lovin’ Oven trained me. Now I bake for schools and events in my community.” – Mama, Trainee",
+    //video: "https://www.youtube.com/embed/1a2b3c4d5e",
     icon: <UtensilsCrossed size={40} />,
     color: "bg-orangeHat/10 text-orangeHat",
   },
   {
-    title: "Mentorship & Character Building",
-    desc: "A mentoring network that connects children and teens with loving adults who guide them emotionally, spiritually, and academically.",
-    image: "https://picsum.photos/seed/program-mentorship/800/600",
-    story: "“My mentor helped me believe in myself again. I’m now teaching other girls that they are enough.” – Zainab, Mentee",
-    video: "https://www.youtube.com/embed/2b3c4d5e6f",
+    title: "Mentorship & Character Building (HWOLEMEN)",
+    desc: "Mature men mentor young menYoung men are empowered through meaningful relationships with mature men. Rehabilitation, Skill aqcuisition, Life skills training, Belonging — Providing accountability and a place to grow and belong.",
+    image: "/images/hwolemen.jpg",
+    //story: "“My mentor helped me believe in myself again. I’m now teaching other girls that they are enough.” – Zainab, Mentee",
+    //video: "https://www.youtube.com/embed/2b3c4d5e6f",
     icon: <HeartHandshake size={40} />,
     color: "bg-greenHat/10 text-greenHat",
   },
   {
-    title: "Childcare & Learning Centers",
+    title: "Learning Center",
     desc: "Safe, nurturing spaces where children receive early education, meals, and moral guidance — shaping a foundation for lifelong growth.",
-    image: "https://picsum.photos/seed/program-childcare/800/600",
-    story: "“I leave my daughter at the center each morning knowing she’s loved, fed, and learning.” – Mary, Parent",
-    video: "https://www.youtube.com/embed/3c4d5e6f7g",
+    image: "/images/learning center.jpg",
+    //story: "“I leave my daughter at the center each morning knowing she’s loved, fed, and learning.” – Mary, Parent",
+    //video: "https://www.youtube.com/embed/3c4d5e6f7g",
     icon: <BookOpen size={40} />,
     color: "bg-blue-100 text-blue-600",
   },
+    {
+    title: "Rooted house",
+    desc: "A home for young women in crisis Young women experience wholeness, Skill training, life skills, education, Inspiring hope through community-living and discipleship.",
+    image: "/images/rooted house.jpg",
+    //story: "“My mentor helped me believe in myself again. I’m now teaching other girls that they are enough.” – Zainab, Mentee",
+   // video: "https://www.youtube.com/embed/2b3c4d5e6f",
+    icon: <HeartHandshake size={40} />,
+    color: "bg-greenHat/10 text-greenHat",
+  },
+    {
+    title: "After-School Adventures",
+    desc: "The Orange Hat provides a place where engaging learning activities inspire hope, healing and wholeness through literature for children on their educational journey.",
+    image: "/images/after school adventure.jpg",
+    //story: "“I leave my daughter at the center each morning knowing she’s loved, fed, and learning.” – Mary, Parent",
+    //video: "https://www.youtube.com/embed/3c4d5e6f7g",
+    icon: <BookOpen size={40} />,
+    color: "bg-blue-100 text-blue-600",
+  },
+    {
+    title: "Holiday Orage Hat",
+    desc: "5 Impactful weeks, 200+ children Joyful, exploratory learning Including skills and arts training with faithful and loving adults",
+    image: "/images/holiday.jpeg",
+    //story: "“My mentor helped me believe in myself again. I’m now teaching other girls that they are enough.” – Zainab, Mentee",
+   // video: "https://www.youtube.com/embed/2b3c4d5e6f",
+    icon: <HeartHandshake size={40} />,
+    color: "bg-greenHat/10 text-greenHat",
+  }
 ];
 
-const ProgramsPage = ({ onNavigate }) => {
-  const handleNavClick = (e, page) => {
+interface ProgramsPageProps {
+  onNavigate: (page: string) => void;
+}
+
+const ProgramsPage = ({ onNavigate }: ProgramsPageProps) => {
+  const handleNavClick = (e: MouseEvent<HTMLAnchorElement>, page: string) => {
     e.preventDefault();
     onNavigate(page);
   };
@@ -79,12 +108,12 @@ const ProgramsPage = ({ onNavigate }) => {
             <div className={`relative overflow-hidden rounded-2xl shadow-md transition-all duration-500 group-hover:shadow-orangeHat/30 group-hover:shadow-2xl ${i % 2 !== 0 ? "md:order-last" : ""}`}>
               <img src={program.image} alt={program.title} className="rounded-2xl object-cover w-full h-96 transform group-hover:scale-105 transition-transform duration-500" />
               <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent rounded-2xl"></div>
-              {/* Play Button Overlay */}
-              <a href={program.video} target="_blank" rel="noreferrer" className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+              {/* Play Button Overlay - Hidden for now since videos are not available */}
+              {/* <a href={program.video} target="_blank" rel="noreferrer" className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-500">
                 <div className="bg-white text-orangeHat w-14 h-14 rounded-full flex items-center justify-center shadow-md hover:scale-110 transition-transform">
                   <Play size={28} />
                 </div>
-              </a>
+              </a> */}
             </div>
 
             {/* Text */}

@@ -22,7 +22,7 @@ const Support: React.FC = () => {
         Orange Hat expand these programs, reach more lives, and create lasting impact in the community.
       </p>
       
-      {/* Donation Button */}
+     {/* Donation Button */}
       <button
         onClick={handleDonateClick}
         className="bg-greenHat hover:bg-green-700 text-white font-semibold py-4 px-8 rounded-lg shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-200 mb-4"

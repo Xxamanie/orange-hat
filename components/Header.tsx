@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 
 // Replaced lucide-react icons with inline SVGs for simplicity
 const Menu = ({ size = 24 }) => (
@@ -36,7 +36,12 @@ const X = ({ size = 24 }) => (
   </svg>
 );
 
-const Header = ({ onNavigate, currentPage }) => {
+interface HeaderProps {
+  onNavigate: (page: string) => void;
+  currentPage: string;
+}
+
+const Header = ({ onNavigate, currentPage }: HeaderProps) => {
   const [navOpen, setNavOpen] = useState(false);
 
   const navLinks = [
@@ -44,11 +49,11 @@ const Header = ({ onNavigate, currentPage }) => {
     { name: "About", page: "about" },
     { name: "Programs", page: "programs" },
     { name: "Get Involved", page: "get-involved" },
-    { name: "Media", page: "media" },
+    //{ name: "Media", page: "media" },
     { name: "Contact", page: "contact" },
   ];
   
-  const handleNavClick = (page) => {
+  const handleNavClick = (page: string) => {
     onNavigate(page);
     setNavOpen(false);
   }
@@ -59,9 +64,7 @@ const Header = ({ onNavigate, currentPage }) => {
         {/* Logo */}
         <div className="flex items-center space-x-2">
           {/* Placeholder for logo.png */}
-          <div className="w-10 h-10 bg-orange-500 rounded-full flex items-center justify-center font-bold text-white text-xl">
-            O
-          </div>
+          <img src="/images/logo.png" alt="Orange Hat Logo" className="w-10 h-10 rounded-full" />
           <h1 className="text-2xl font-semibold text-white">Orange Hat</h1>
         </div>
 

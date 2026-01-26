@@ -19,7 +19,7 @@ const SupportPage: React.FC<NavigationProps> = ({ onNavigate }) => {
         </motion.h1>
         <p className="text-gray-600 max-w-3xl mx-auto text-lg">
           Your support enables Orange Hat Childcare Foundation to continue creating safe spaces 
-          where children and their caregivers can grow and thrive in our community.
+          where young single mothers, children and their caregivers can grow and thrive in our community.
         </p>
       </section>
 
@@ -32,7 +32,7 @@ const SupportPage: React.FC<NavigationProps> = ({ onNavigate }) => {
       <section className="py-16 px-6 bg-gray-50">
         <div className="max-w-2xl mx-auto">
           <h2 className="text-2xl font-medium text-gray-800 mb-4 text-center">
-            Direct Bank Transfer (Optional)
+            Direct Bank Transfer
           </h2>
           
           <p className="text-gray-600 mb-8 text-center leading-relaxed">
@@ -44,7 +44,7 @@ const SupportPage: React.FC<NavigationProps> = ({ onNavigate }) => {
             <div className="space-y-4">
               <div className="flex justify-between py-2 border-b border-gray-100">
                 <span className="text-gray-600">Account Name:</span>
-                <span className="text-gray-800 font-medium">Orange Hat Foundation International</span>
+                <span className="text-gray-800 font-medium">Orange Hat ChildCare Foundation</span>
               </div>
               
               <div className="flex justify-between py-2 border-b border-gray-100">
@@ -54,19 +54,14 @@ const SupportPage: React.FC<NavigationProps> = ({ onNavigate }) => {
               
               <div className="flex justify-between py-2 border-b border-gray-100">
                 <span className="text-gray-600">Account Number:</span>
-                <span className="text-gray-800 font-medium">XXXXXXXX</span>
-              </div>
-              
-              <div className="flex justify-between py-2">
-                <span className="text-gray-600">Account Type:</span>
-                <span className="text-gray-800 font-medium">Current</span>
+                <span className="text-gray-800 font-medium">1931318767</span>
               </div>
             </div>
+
+            <p className="text-sm text-gray-500 mt-6 text-center">
+              For accountability and record-keeping, you may notify us after making a transfer.
+            </p>
           </div>
-          
-          <p className="text-sm text-gray-500 mt-6 text-center">
-            For accountability and record-keeping, you may notify us after making a transfer.
-          </p>
         </div>
       </section>
 

@@ -1,4 +1,4 @@
-import React from "react";
+import { MouseEvent } from "react";
 import { motion } from "framer-motion";
 
 // --- SVG Icon Components ---
@@ -53,7 +53,7 @@ const AboutPage = ({ onNavigate }) => {
           viewport={{ once: true }}
         >
           <img
-            src="https://picsum.photos/seed/aboutstory/800/600"
+            src="/images/background.jpg"
             alt="Children smiling and learning together"
             className="rounded-2xl shadow-md object-cover w-full h-96"
           />
@@ -147,9 +147,9 @@ const AboutPage = ({ onNavigate }) => {
 
         <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-10 text-center">
           {[
-            { name: "Vincent Madugu", role: "Founder / Director", image: "https://picsum.photos/seed/vincent/400/400" },
-            { name: "Usman Yakubu", role: "Program Coordinator", image: "https://picsum.photos/seed/usman/400/400" },
-            { name: "Joseph Shaibu", role: "Volunteer Lead", image: "https://picsum.photos/seed/joseph/400/400" },
+            { name: "Blessing Samuel", role: "Director", image: "/images/blessing.jpg" },
+            { name: "Funke Muniru", role: "Program Coordinator", image: "/images/funke.jpg" },
+            { name: "Joel Tshibangu", role: "Secretory", image: "/images/joel.jpg" },
           ].map((member, i) => (
             <motion.div
               key={i}

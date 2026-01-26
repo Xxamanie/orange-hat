@@ -6,7 +6,11 @@ import ImpactStats from '../components/ImpactStats';
 import GetInvolved from '../components/GetInvolved';
 import Newsletter from '../components/Newsletter';
 
-const HomePage = ({ onNavigate }) => {
+interface HomePageProps {
+  onNavigate: (page: string) => void;
+}
+
+const HomePage = ({ onNavigate }: HomePageProps) => {
   return (
     <main>
       <Hero onNavigate={onNavigate} />

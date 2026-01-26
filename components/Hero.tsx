@@ -1,8 +1,12 @@
-import React from "react";
+import { MouseEvent } from "react";
 import { motion } from "framer-motion";
 
-const Hero = ({ onNavigate }) => {
-  const handleNavClick = (e, page) => {
+interface HeroProps {
+  onNavigate: (page: string) => void;
+}
+
+const Hero = ({ onNavigate }: HeroProps) => {
+  const handleNavClick = (e: MouseEvent<HTMLAnchorElement>, page: string) => {
     e.preventDefault();
     onNavigate(page);
   };
@@ -16,7 +20,7 @@ const Hero = ({ onNavigate }) => {
       <div
         className="absolute inset-0 bg-center bg-cover blur-sm scale-105"
         style={{
-          backgroundImage: "url('https://picsum.photos/seed/orangehat/1920/1080')",
+          backgroundImage: "/images/background.jpg",
         }}
         role="presentation"
       ></div>

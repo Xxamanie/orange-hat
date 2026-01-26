@@ -16,12 +16,12 @@
     }
   ],
   "env": {
-    "VITE_API_BASE_URL": "@vite_api_base_url",
-    "VITE_CONTACT_EMAIL": "@vite_contact_email",
-    "VITE_PHONE_NUMBER": "@vite_phone_number",
-    "VITE_FACEBOOK_URL": "@vite_facebook_url",
-    "VITE_INSTAGRAM_URL": "@vite_instagram_url",
-    "VITE_YOUTUBE_URL": "@vite_youtube_url",
-    "VITE_GA_TRACKING_ID": "@vite_ga_tracking_id"
+    "VITE_API_BASE_URL": "https://api.orangehat.org",
+    "VITE_CONTACT_EMAIL": "info@orangehat.org",
+    "VITE_PHONE_NUMBER": "+234-XXX-XXX-XXXX",
+    "VITE_FACEBOOK_URL": "https://facebook.com/orangehatchildcare",
+    "VITE_INSTAGRAM_URL": "https://instagram.com/orangehatchildcare",
+    "VITE_YOUTUBE_URL": "https://youtube.com/@orangehatchildcare",
+    "VITE_GA_TRACKING_ID": ""
   }
 }

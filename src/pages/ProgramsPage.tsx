@@ -61,7 +61,7 @@ const programs = [
     color: "bg-blue-100 text-blue-600",
   },
     {
-    title: "Holiday Orage Hat",
+    title: "Holiday Orange Hat",
     desc: "5 Impactful weeks, 200+ children Joyful, exploratory learning Including skills and arts training with faithful and loving adults",
     image: "/images/holiday.jpeg",
     //story: "“My mentor helped me believe in myself again. I’m now teaching other girls that they are enough.” – Zainab, Mentee",
@@ -82,19 +82,20 @@ const ProgramsPage = ({ onNavigate }: ProgramsPageProps) => {
   };
 
   return (
-    <main className="pt-[90px] bg-white text-gray-800">
+    <main className="pt-[90px] bg-gradient-to-b from-white to-gray-50 text-gray-800">
       {/* Header */}
-      <section className="bg-cream py-20 px-6 text-center">
-        <motion.h1 initial={{ opacity: 0, y: 40 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }} viewport={{ once: true }} className="text-4xl md:text-5xl font-bold mb-4">
+      <section className="bg-gradient-to-br from-cream via-orange-50 to-white py-20 px-6 text-center relative overflow-hidden">
+        <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxnIGZpbGw9IiNmOTczMTYiIGZpbGwtb3BhY2l0eT0iMC4wNSI+PGNpcmNsZSBjeD0iMzAiIGN5PSIzMCIgcj0iNCIvPjwvZz48L2c+PC9zdmc+')] opacity-30"></div>
+        <motion.h1 initial={{ opacity: 0, y: 40 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }} viewport={{ once: true }} className="text-4xl md:text-5xl font-bold mb-4 relative z-10">
           Our Programs
         </motion.h1>
-        <p className="text-gray-600 max-w-2xl mx-auto text-lg">
+        <p className="text-gray-600 max-w-2xl mx-auto text-lg relative z-10">
           Every initiative at Orange Hat is a bridge of hope — connecting hearts, skills, and opportunities to transform lives.
         </p>
       </section>
 
       {/* Programs Grid */}
-      <section className="py-20 px-6 md:px-12 max-w-6xl mx-auto space-y-28">
+      <section className="py-20 px-6 md:px-12 max-w-6xl mx-auto space-y-20">
         {programs.map((program, i) => (
           <motion.div
             key={i}

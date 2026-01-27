@@ -75,7 +75,7 @@ const Header = ({ onNavigate, currentPage }: HeaderProps) => {
               key={link.name}
               href="#"
               onClick={(e) => { e.preventDefault(); handleNavClick(link.page)}}
-              className={`transition-colors ${currentPage === link.page ? 'text-orangeHat' : 'hover:text-orangeHat'}`}
+              className={`px-3 py-2 rounded-md transition-colors ${currentPage === link.page ? 'bg-orangeHat text-white' : 'hover:bg-orangeHat/20 hover:text-orangeHat'}`}
             >
               {link.name}
             </a>

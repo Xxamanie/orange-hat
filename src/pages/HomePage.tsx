@@ -10,7 +10,7 @@ interface HomePageProps {
   onNavigate: (page: string) => void;
 }
 
-const HomePage = ({ onNavigate }: HomePageProps) => {
+const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
   return (
     <main>
       <Hero onNavigate={onNavigate} />

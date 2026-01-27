@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
-import { NavigationProps, ContactFormData } from "../types";
-import { submitContactForm } from "../utils/api";
-import { validateContactForm } from "../utils/validation";
-import { APP_CONFIG, SOCIAL_LINKS } from "../utils/constants";
+import { NavigationProps, ContactFormData } from "../../types";
+import { submitContactForm } from "../../utils/api";
+import { validateContactForm } from "../../utils/validation";
+import { APP_CONFIG, SOCIAL_LINKS } from "../../utils/constants";
 
 // --- SVG Icon Components ---
 const MapPin = ({ size = 24 }) => (

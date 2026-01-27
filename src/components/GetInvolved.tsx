@@ -42,7 +42,7 @@ const actions = [
   },
 ];
 
-const GetInvolved = ({ onNavigate }) => {
+const GetInvolved: React.FC<GetInvolvedProps> = ({ onNavigate }) => {
   const handleNavClick = (e) => {
     e.preventDefault();
     onNavigate('get-involved');

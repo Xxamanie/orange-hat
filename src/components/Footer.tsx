@@ -54,7 +54,7 @@ const Footer = ({ onNavigate }) => {
           <p className="text-sm text-orange-50 mb-4">
             COCIN Church Jiyep, Hwolshe, Jos, Plateau State, Nigeria  
             <br /> Email:{" "}
-            <a href="mailto:info@orangehat.org" className="underline hover:text-white">
+            <a href="mailto:info@orange-hat.org" className="underline hover:text-white">
               info@orangehat.org
             </a>
           </p>

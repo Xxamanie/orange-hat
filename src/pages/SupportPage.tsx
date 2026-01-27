@@ -49,7 +49,7 @@ const SupportPage: React.FC<NavigationProps> = ({ onNavigate }) => {
               
               <div className="flex justify-between py-2 border-b border-gray-100">
                 <span className="text-gray-600">Bank Name:</span>
-                <span className="text-gray-800 font-medium">Zenith Bank</span>
+                <span className="text-gray-800 font-medium">Access Bank</span>
               </div>
               
               <div className="flex justify-between py-2 border-b border-gray-100">

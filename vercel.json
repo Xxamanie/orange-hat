@@ -1,14 +1,8 @@
 {
-  "version": 2,
-  "builds": [
-    {
-      "src": "package.json",
-      "use": "@vercel/static-build",
-      "config": {
-        "distDir": "dist"
-      }
-    }
-  ],
+  "rewrites": [
+    { "source": "/(.*)", "destination": "/" }
+  ]
+}
   "routes": [
     {
       "src": "/(.*)",
@@ -16,12 +10,12 @@
     }
   ],
   "env": {
-    "VITE_API_BASE_URL": "https://api.orangehat.org",
-    "VITE_CONTACT_EMAIL": "info@orangehat.org",
+    "VITE_API_BASE_URL": "https://api.orange-hat.org",
+    "VITE_CONTACT_EMAIL": "info@orange-hat.org",
     "VITE_PHONE_NUMBER": "+234-XXX-XXX-XXXX",
-    "VITE_FACEBOOK_URL": "https://facebook.com/orangehatchildcare",
-    "VITE_INSTAGRAM_URL": "https://instagram.com/orangehatchildcare",
-    "VITE_YOUTUBE_URL": "https://youtube.com/@orangehatchildcare",
+    "VITE_FACEBOOK_URL": "https://facebook.com/orange-hatchildcare",
+    "VITE_INSTAGRAM_URL": "https://instagram.com/orange-hatchildcare",
+    "VITE_YOUTUBE_URL": "https://youtube.com/@orange-hatchildcare",
     "VITE_GA_TRACKING_ID": ""
   }
 }

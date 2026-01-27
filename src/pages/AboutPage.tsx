@@ -148,7 +148,7 @@ const AboutPage = ({ onNavigate }: AboutPageProps) => {
         <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-10 text-center">
           {[
             { name: "Blessing Samuel", role: "Director", image: "/images/blessing.jpg" },
-            { name: "Funke Muniru", role: "Program Coordinator", image: "/images/funke.jpg" },
+            { name: "Funke Muniru", role: "Director of operations ", image: "/images/funke.jpg" },
             { name: "Joel Tshibangu", role: "Secretary", image: "/images/joel.jpg" },
           ].map((member, i) => (
             <motion.div

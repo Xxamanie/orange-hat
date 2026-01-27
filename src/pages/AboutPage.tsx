@@ -149,7 +149,7 @@ const AboutPage = ({ onNavigate }: AboutPageProps) => {
           {[
             { name: "Blessing Samuel", role: "Director", image: "/images/blessing.jpg" },
             { name: "Funke Muniru", role: "Program Coordinator", image: "/images/funke.jpg" },
-            { name: "Joel Tshibangu", role: "Secretory", image: "/images/joel.jpg" },
+            { name: "Joel Tshibangu", role: "Secretary", image: "/images/joel.jpg" },
           ].map((member, i) => (
             <motion.div
               key={i}

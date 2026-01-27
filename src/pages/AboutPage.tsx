@@ -25,7 +25,7 @@ const BookOpen = ({ size = 36 }) => (
 );
 
 
-const AboutPage = ({ onNavigate }) => {
+const AboutPage = ({ onNavigate }: AboutPageProps) => {
   return (
     <main className="pt-[90px] bg-white text-gray-800">
       {/* Header Section */}

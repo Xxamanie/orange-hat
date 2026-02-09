@@ -18,7 +18,7 @@ const programs = [
   {
     title: "Lovin’ Oven Initiative",
     desc: "A skill development program that teaches baking and catering to young women and caregivers — building both confidence and a source of income.",
-    image: "/images/lovin' oven.jpg",
+    image: "/images/lovin' oven.jpeg",
     story: "“I never believed I could earn from my passion for baking — until Lovin’ Oven trained me. Now I bake for schools and events in my community.” – Mama, Trainee",
     //video: "https://www.youtube.com/embed/1a2b3c4d5e",
     icon: <UtensilsCrossed size={40} />,
@@ -27,7 +27,7 @@ const programs = [
   {
     title: "Mentorship & Character Building (HWOLEMEN)",
     desc: "Mature men mentor young menYoung men are empowered through meaningful relationships with mature men. Rehabilitation, Skill aqcuisition, Life skills training, Belonging — Providing accountability and a place to grow and belong.",
-    image: "/images/hwolemen.jpg",
+    image: "/images/wholemen.jpeg",
     //story: "“My mentor helped me believe in myself again. I’m now teaching other girls that they are enough.” – Zainab, Mentee",
     //video: "https://www.youtube.com/embed/2b3c4d5e6f",
     icon: <HeartHandshake size={40} />,
@@ -45,7 +45,7 @@ const programs = [
     {
     title: "Rooted house",
     desc: "A home for young women in crisis Young women experience wholeness, Skill training, life skills, education, Inspiring hope through community-living and discipleship.",
-    image: "/images/rooted house.jpg",
+    image: "/images/rooted house.jpeg",
     //story: "“My mentor helped me believe in myself again. I’m now teaching other girls that they are enough.” – Zainab, Mentee",
    // video: "https://www.youtube.com/embed/2b3c4d5e6f",
     icon: <HeartHandshake size={40} />,
@@ -54,7 +54,7 @@ const programs = [
     {
     title: "After-School Adventures",
     desc: "The Orange Hat provides a place where engaging learning activities inspire hope, healing and wholeness through literature for children on their educational journey.",
-    image: "/images/after school adventure.jpg",
+    image: "/images/after school adventure.jpeg",
     //story: "“I leave my daughter at the center each morning knowing she’s loved, fed, and learning.” – Mary, Parent",
     //video: "https://www.youtube.com/embed/3c4d5e6f7g",
     icon: <BookOpen size={40} />,

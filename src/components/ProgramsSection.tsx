@@ -16,7 +16,7 @@ const programs = [
   {
     title: "Lovin' Oven Initiative",
     desc: "A skill development program that teaches baking and catering to young women and caregivers — building both confidence and a source of income.",
-    image: "/images/lovin' oven.jpg",
+    image: "/images/lovin' oven.jpeg",
     story: "\"I never believed I could earn from my passion for baking — until Lovin' Oven trained me. Now I bake for schools and events in my community.\" – Mama, Trainee",
     icon: <UtensilsCrossed size={40} />,
     color: "bg-orangeHat/10 text-orangeHat",

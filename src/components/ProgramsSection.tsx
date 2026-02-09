@@ -24,7 +24,7 @@ const programs = [
   {
     title: "Mentorship & Character Building (HWOLEMEN)",
     desc: "Mature men mentor young men. Young men are empowered through meaningful relationships with mature men. Rehabilitation, Skill acquisition, Life skills training, Belonging — Providing accountability and a place to grow and belong.",
-    image: "/images/hwolemen.jpg",
+    image: "/images/wholemen.jpeg",
     icon: <HeartHandshake size={40} />,
     color: "bg-greenHat/10 text-greenHat",
   },

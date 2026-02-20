@@ -40,17 +40,17 @@ const HandHeart = ({ size = 42, strokeWidth = 1.5 }) => (
 );
 
 const stats = [
-  //{
-    //icon: <Users {...iconProps} />,
-    //number: 200,
-    //suffix: "+",
-    //label: "Children Impacted",
-  //},
+  {
+    icon: <Users {...iconProps} />,
+    number: 2,
+    suffix: "+",
+    label: "young men currently being mentored in skills",
+  },
   {
     icon: <GraduationCap {...iconProps} />,
-    number: 50,
+    number: 19,
     suffix: "+",
-    label: "Young Women Trained",
+    label: "Young Women Currently Being Trained In Skills",
   },
   {
     icon: <HeartHandshake {...iconProps} />,

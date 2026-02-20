@@ -24,11 +24,10 @@ const StatCounter = ({ value, suffix = "" }) => {
   return <span ref={ref}>0{suffix}</span>;
 };
 
-const stats = [
-  { value: 1200, label: "Children Served", suffix: "+" },
-  { value: 350, label: "Volunteers Engaged", suffix: "+" },
+const stats = [,
+  { value: 30, label: "Volunteers Engaged", suffix: "+" },
   { value: 25000, label: "Meals Provided", suffix: "+" },
-  { value: 50, label: "Community Partners", suffix: "+" },
+  //{ value: 50, label: "Community Partners", suffix: "+" },
 ];
 
 const Stats = () => {

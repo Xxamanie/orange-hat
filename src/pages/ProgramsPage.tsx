@@ -142,9 +142,9 @@ const ProgramsPage = ({ onNavigate }: ProgramsPageProps) => {
         </motion.h2>
         <div className="grid md:grid-cols-3 gap-10 max-w-6xl mx-auto">
           {[
-            { label: "Children Reached", value: "1,500+" },
-            { label: "Women Trained", value: "250+" },
-            { label: "Communities Served", value: "10+" },
+            { label: "Children Reached", value: "150+" },
+            { label: "Women Trained", value: "25+" },
+            { label: "Communities Served", value: "1" },
           ].map((stat, i) => (
             <motion.div key={i} initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} transition={{ delay: i * 0.2, duration: 0.8 }} viewport={{ once: true }} className="bg-white p-10 rounded-2xl shadow-md hover:shadow-lg transition-all">
               <h3 className="text-4xl font-bold text-orangeHat mb-2">{stat.value}</h3>

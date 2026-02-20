@@ -44,7 +44,7 @@ const stats = [
     icon: <Users {...iconProps} />,
     number: 2,
     suffix: "+",
-    label: "young men currently being mentored in skills",
+    label: "Young Men Currently Being Mentored In Skills",
   },
   {
     icon: <GraduationCap {...iconProps} />,

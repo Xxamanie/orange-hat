@@ -1,7 +1,17 @@
 import React, { useEffect, useState } from 'react';
 import { programs } from '../data/programs';
 
-export type RoutePath = '/' | '/programs' | '/team' | '/impact' | '/contact';
+export type RoutePath =
+  | '/'
+  | '/programs'
+  | '/team'
+  | '/impact'
+  | '/contact'
+  | '/contact/give'
+  | '/contact/volunteer'
+  | '/contact/sponsor'
+  | '/contact/partner'
+  | '/contact/enquire';
 
 interface ProgramListItem {
   strong: string;
@@ -12,6 +22,17 @@ interface ProgramDetails {
   pills?: string[];
   list?: ProgramListItem[];
   firstPara?: string;
+}
+
+interface ContactJourney {
+  path: Extract<RoutePath, `/contact/${string}`>;
+  title: string;
+  label: string;
+  image: string;
+  lead: string;
+  body: string[];
+  highlight: string;
+  cta: string;
 }
 
 const withBase = (path: string) => {
@@ -89,6 +110,78 @@ const navItems: Array<{ label: string; path: RoutePath }> = [
   { label: 'Contact', path: '/contact' },
 ];
 
+export const contactJourneys: ContactJourney[] = [
+  {
+    path: '/contact/give',
+    title: 'Give Financially',
+    label: 'Give',
+    image: '/images/rooted house.jpeg',
+    lead: 'Support Orange Hat through practical giving that strengthens programs, homes, and educational pathways.',
+    body: [
+      'Financial giving helps sustain core needs across tutoring, residential support, discipleship, skill acquisition, and sponsorship care.',
+      'This page is designed for visitors who already know they want to contribute and need a focused path into that conversation.',
+    ],
+    highlight: 'Fund learning, care, and long-term restoration.',
+    cta: 'I want to support financially',
+  },
+  {
+    path: '/contact/volunteer',
+    title: 'Volunteer Your Time',
+    label: 'Volunteer',
+    image: '/images/holiday.jpeg',
+    lead: 'Step into the work directly by offering your time, skills, energy, or presence where it is most useful.',
+    body: [
+      'Volunteers can strengthen programming through tutoring, mentoring, logistics help, creative support, event service, and practical community engagement.',
+      'This route makes it easy for someone to say not just I care, but I am ready to show up.',
+    ],
+    highlight: 'Join the work on the ground.',
+    cta: 'I want to volunteer',
+  },
+  {
+    path: '/contact/sponsor',
+    title: 'Sponsor A Student',
+    label: 'Sponsor',
+    image: '/images/learning center.jpg',
+    lead: 'Help remove educational barriers by supporting a child or young person through tuition, materials, and ongoing care.',
+    body: [
+      'Sponsorship reaches beyond school fees into books, uniforms, supplies, academic monitoring, and the relational support needed for progress.',
+      'This destination speaks to visitors who want their giving tied to a clear educational outcome.',
+    ],
+    highlight: 'Back a student with consistent support.',
+    cta: 'I want to sponsor a student',
+  },
+  {
+    path: '/contact/partner',
+    title: 'Build A Partnership',
+    label: 'Partner',
+    image: '/images/joel.jpg',
+    lead: 'Explore institutional, ministry, business, or strategic collaboration with Orange Hat.',
+    body: [
+      'Partnerships can take the form of funding, expertise, in-kind support, referrals, facilities access, training, or coordinated community programming.',
+      'This page is built for people looking beyond one-off support toward sustained collaboration.',
+    ],
+    highlight: 'Create shared impact with Orange Hat.',
+    cta: 'I want to discuss partnership',
+  },
+  {
+    path: '/contact/enquire',
+    title: 'Ask A Question',
+    label: 'Enquire',
+    image: '/images/blessing.jpg',
+    lead: 'Start with a conversation if you want to learn more before choosing how to engage.',
+    body: [
+      'Some visitors are still deciding, comparing options, or looking for clarity around a specific program or need.',
+      'This route keeps the experience open and welcoming while still feeling guided and intentional.',
+    ],
+    highlight: 'Get clarity before taking your next step.',
+    cta: 'I have a question',
+  },
+];
+
+const isContactNavPath = (path: RoutePath) => path.startsWith('/contact');
+const isNavItemActive = (currentPath: RoutePath, itemPath: RoutePath) =>
+  itemPath === '/contact' ? isContactNavPath(currentPath) : currentPath === itemPath;
+
 export const routeHref = (path: RoutePath) => (path === '/' ? '#/' : `#${path}`);
 
 export const SiteNav: React.FC<{ currentPath: RoutePath }> = ({ currentPath }) => {
@@ -114,7 +207,7 @@ export const SiteNav: React.FC<{ currentPath: RoutePath }> = ({ currentPath }) =
         <ul className="nav-links">
           {navItems.map((item) => (
             <li key={item.path}>
-              <a href={routeHref(item.path)} className={currentPath === item.path ? 'is-active' : undefined}>
+              <a href={routeHref(item.path)} className={isNavItemActive(currentPath, item.path) ? 'is-active' : undefined}>
                 {item.label}
               </a>
             </li>
@@ -133,7 +226,7 @@ export const SiteNav: React.FC<{ currentPath: RoutePath }> = ({ currentPath }) =
           <a
             key={item.path}
             href={routeHref(item.path)}
-            className={currentPath === item.path ? 'is-active' : undefined}
+            className={isNavItemActive(currentPath, item.path) ? 'is-active' : undefined}
           >
             {item.label}
           </a>
@@ -395,6 +488,52 @@ export const StaffSection: React.FC = () => (
 );
 
 export const ContactSection: React.FC = () => {
+  const [activePath, setActivePath] = useState<ContactJourney['path']>(contactJourneys[0].path);
+
+  return (
+    <section id="contact" className="contact-tour-section fade-in">
+      <div className="contact-tour-intro reveal">
+        <div className="section-tag">Choose Your Next Step</div>
+        <h2 className="section-h2">Move through the <em>Contact Journey</em></h2>
+        <p className="section-lead">
+          Instead of one crowded page, select the card that fits your reason for visiting. Each route opens its own focused page and carries the visitor deeper into the site.
+        </p>
+      </div>
+
+      <div className="contact-tour-deck reveal">
+        {contactJourneys.map((journey, index) => {
+          const isActive = activePath === journey.path;
+
+          return (
+            <a
+              key={journey.path}
+              href={routeHref(journey.path)}
+              className={`contact-tour-card ${isActive ? 'is-active' : ''}`}
+              style={{ ['--stack-index' as string]: index } as React.CSSProperties}
+              onMouseEnter={() => setActivePath(journey.path)}
+              onFocus={() => setActivePath(journey.path)}
+            >
+              <img
+                src={encodeURI(withBase(journey.image))}
+                alt={journey.title}
+                className="contact-tour-card-image"
+              />
+              <div className="contact-tour-card-overlay" />
+              <div className="contact-tour-card-glow" />
+              <div className="contact-tour-card-copy">
+                <span>{journey.label}</span>
+                <h3>{journey.title}</h3>
+              </div>
+            </a>
+          );
+        })}
+      </div>
+    </section>
+  );
+};
+
+export const ContactDetailSection: React.FC<{ journeyPath: ContactJourney['path'] }> = ({ journeyPath }) => {
+  const journey = contactJourneys.find((item) => item.path === journeyPath) ?? contactJourneys[0];
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     alert('Message sent successfully!');
@@ -404,13 +543,16 @@ export const ContactSection: React.FC = () => {
     <section id="contact" className="cta-section fade-in">
       <div className="contact-left reveal">
         <div className="section-tag">Get In Touch</div>
-        <h2 className="section-h2">Partner With<br/><em>Orange Hat Childcare Foundation</em></h2>
-        <p className="section-lead">
-          Whether you'd like to volunteer, donate, sponsor a student, or simply find out more about our work - we'd love to hear from you.
-        </p>
+        <h2 className="section-h2">{journey.title}<br/><em>with Orange Hat</em></h2>
+        <p className="section-lead">{journey.lead}</p>
+        {journey.body.map((paragraph) => (
+          <p className="section-lead contact-detail-copy" key={paragraph}>{paragraph}</p>
+        ))}
+
+        <div className="contact-highlight">{journey.highlight}</div>
 
         <div className="contact-item" style={{ marginTop: '36px' }}>
-          <div className="contact-icon">Email</div>
+          <div className="contact-icon">Mail</div>
           <a href="mailto:orangehatjoy@gmail.com">orangehatjoy@gmail.com</a>
         </div>
         <div className="contact-item">
@@ -425,7 +567,7 @@ export const ContactSection: React.FC = () => {
 
       <div className="contact-form reveal">
         <form onSubmit={handleSubmit}>
-          <h3>Send Us a Message</h3>
+          <h3>{journey.cta}</h3>
           <div className="form-group">
             <label>Full Name</label>
             <input type="text" placeholder="Your name" required />
@@ -437,12 +579,9 @@ export const ContactSection: React.FC = () => {
           <div className="form-group">
             <label>I want to...</label>
             <select>
-              <option>Donate / Give financially</option>
-              <option>Volunteer my time</option>
-              <option>Sponsor a student</option>
-              <option>Partner with Orange Hat Childcare Foundation</option>
-              <option>Learn more about a program</option>
-              <option>Other enquiry</option>
+              {contactJourneys.map((item) => (
+                <option key={item.path}>{item.title}</option>
+              ))}
             </select>
           </div>
           <div className="form-group">

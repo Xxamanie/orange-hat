@@ -692,6 +692,171 @@ section {
 .contact-form { background: white; border-radius: 24px; padding: 40px; box-shadow: 0 12px 40px rgba(0,0,0,0.08); }
 .contact-form h3 { font-family: 'Playfair Display', serif; font-size: 1.5rem; margin-bottom: 24px; color: var(--warm-dk); }
 
+.contact-tour-section {
+  padding: 96px 5% 110px;
+  background: linear-gradient(180deg, #fff8f0 0%, #fffaf4 100%);
+}
+
+.contact-tour-intro {
+  margin-bottom: 40px;
+  text-align: center;
+}
+
+.contact-tour-intro .section-lead {
+  margin: 0 auto;
+}
+
+.contact-tour-deck {
+  position: relative;
+  height: 520px;
+  max-width: 1260px;
+  margin: 0 auto;
+}
+
+.contact-tour-card {
+  --card-left: calc(var(--stack-index) * 12%);
+  position: absolute;
+  top: 0;
+  left: var(--card-left);
+  width: min(52%, 620px);
+  height: 100%;
+  overflow: hidden;
+  border-radius: 28px;
+  background: #120b06;
+  box-shadow: 0 24px 60px rgba(28, 11, 0, 0.2);
+  text-decoration: none;
+  isolation: isolate;
+  transform: translate3d(0, 18px, 0) scale(0.92);
+  transform-origin: center center;
+  z-index: calc(10 + var(--stack-index));
+}
+
+.contact-tour-card-image {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 28%;
+  filter: grayscale(1);
+  transform: scale(1.01);
+  transition:
+    transform 900ms cubic-bezier(0.22, 1, 0.36, 1),
+    filter 900ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.contact-tour-card-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(0,0,0,0.12) 0%, rgba(0,0,0,0.48) 60%, rgba(0,0,0,0.82) 100%);
+  transition: opacity 700ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.contact-tour-card-glow {
+  position: absolute;
+  inset: auto -14% -24% auto;
+  width: 230px;
+  height: 230px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255,154,60,0.42) 0%, rgba(255,154,60,0) 72%);
+  opacity: 0;
+  transform: translate3d(0, 32px, 0);
+  transition:
+    transform 900ms cubic-bezier(0.22, 1, 0.36, 1),
+    opacity 700ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.contact-tour-card-copy {
+  position: absolute;
+  inset: 50% 28px auto 28px;
+  z-index: 2;
+  text-align: center;
+  transform: translateY(-50%);
+  opacity: 0;
+  transition:
+    opacity 700ms cubic-bezier(0.22, 1, 0.36, 1),
+    transform 700ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.contact-tour-card-copy span {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px 12px;
+  border-radius: 999px;
+  background: rgba(255,255,255,0.16);
+  border: 1px solid rgba(255,255,255,0.2);
+  color: rgba(255,255,255,0.9);
+  font-size: 0.74rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.contact-tour-card-copy h3 {
+  margin-top: 18px;
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(1.8rem, 3.4vw, 3rem);
+  line-height: 1.02;
+  color: white;
+  text-shadow: 0 10px 24px rgba(0,0,0,0.34);
+}
+
+.contact-tour-card:hover,
+.contact-tour-card:focus-visible,
+.contact-tour-card.is-active {
+  transform: translate3d(0, 0, 0) scale(1);
+  z-index: 30;
+}
+
+.contact-tour-card:hover .contact-tour-card-image,
+.contact-tour-card:focus-visible .contact-tour-card-image,
+.contact-tour-card.is-active .contact-tour-card-image {
+  filter: grayscale(0);
+  transform: scale(1.08);
+}
+
+.contact-tour-card:hover .contact-tour-card-overlay,
+.contact-tour-card:focus-visible .contact-tour-card-overlay,
+.contact-tour-card.is-active .contact-tour-card-overlay {
+  opacity: 0.44;
+}
+
+.contact-tour-card:hover .contact-tour-card-glow,
+.contact-tour-card:focus-visible .contact-tour-card-glow,
+.contact-tour-card.is-active .contact-tour-card-glow {
+  opacity: 1;
+  transform: translate3d(0, 0, 0);
+}
+
+.contact-tour-card:hover .contact-tour-card-copy,
+.contact-tour-card:focus-visible .contact-tour-card-copy,
+.contact-tour-card.is-active .contact-tour-card-copy {
+  opacity: 1;
+  transform: translateY(-50%);
+}
+
+.contact-tour-card:focus-visible {
+  outline: 2px solid rgba(255,255,255,0.88);
+  outline-offset: 3px;
+}
+
+.contact-detail-copy {
+  margin-top: 12px;
+}
+
+.contact-highlight {
+  display: inline-flex;
+  align-items: center;
+  padding: 12px 16px;
+  margin-top: 18px;
+  border-radius: 16px;
+  background: rgba(232,88,10,0.08);
+  border: 1px solid rgba(232,88,10,0.16);
+  color: var(--warm-md);
+  font-weight: 700;
+}
+
 .form-group { margin-bottom: 18px; }
 .form-group label { display: block; font-size: 0.82rem; font-weight: 600; color: var(--warm-md); margin-bottom: 6px; letter-spacing: .04em; }
 .form-group input, .form-group textarea, .form-group select {
@@ -908,5 +1073,47 @@ footer .footer-links a:hover { color: var(--gold); }
 
   .page-link-card {
     padding: 22px 20px;
+  }
+}
+
+@media (max-width: 900px) {
+  .contact-tour-deck {
+    height: 420px;
+  }
+
+  .contact-tour-card {
+    --card-left: calc(var(--stack-index) * 11%);
+    width: min(62%, 480px);
+  }
+}
+
+@media (max-width: 600px) {
+  .contact-tour-section {
+    padding: 82px 5% 96px;
+  }
+
+  .contact-tour-deck {
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  .contact-tour-card {
+    position: relative;
+    top: auto;
+    left: auto;
+    width: 100%;
+    height: 220px;
+    transform: none;
+    z-index: auto;
+  }
+
+  .contact-tour-card-copy {
+    opacity: 1;
+  }
+
+  .contact-tour-card-copy h3 {
+    font-size: clamp(1.55rem, 8vw, 2.1rem);
   }
 }

@@ -1,6 +1,7 @@
 import React, { useEffect, useMemo, useState } from 'react';
 import { RoutePath, SiteFooter, SiteNav } from './components/SiteSections';
 import ContactPage from './pages/ContactPage';
+import ContactJourneyPage from './pages/ContactJourneyPage';
 import HomePage from './pages/HomePage';
 import ImpactPage from './pages/ImpactPage';
 import ProgramsPage from './pages/ProgramsPage';
@@ -15,6 +16,11 @@ const normalizeRoute = (hash: string): RoutePath => {
     case '/team':
     case '/impact':
     case '/contact':
+    case '/contact/give':
+    case '/contact/volunteer':
+    case '/contact/sponsor':
+    case '/contact/partner':
+    case '/contact/enquire':
       return cleaned;
     default:
       return '/';
@@ -48,6 +54,12 @@ const App: React.FC = () => {
         return <ImpactPage />;
       case '/contact':
         return <ContactPage />;
+      case '/contact/give':
+      case '/contact/volunteer':
+      case '/contact/sponsor':
+      case '/contact/partner':
+      case '/contact/enquire':
+        return <ContactJourneyPage path={currentPath} />;
       default:
         return <HomePage />;
     }

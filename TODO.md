@@ -1,23 +1,15 @@
-# Website Deployment Checklist - Namecheap Hosting
+# Orange Hat Website Transformation TODO
 
-## Completed Tasks
-- [x] Install dependencies (npm install)
-- [x] Build the website (npm run build)
-- [x] Start preview server (npm run preview)
-- [x] Verify all components exist and are properly implemented
-- [x] Verify all pages exist and are properly implemented
-- [x] Confirm build output in dist/ folder
+## Status: In Progress
 
-## Namecheap Deployment Steps
-- [ ] Log into your Namecheap account
-- [ ] Access cPanel for your hosting plan
-- [ ] Use File Manager to upload dist/ folder contents to public_html/
-- [ ] Test the live website
-- [ ] Configure custom domain if needed
+### [x] 1. Backup current index.html
+### [ ] 2. Overwrite index.html with target HTML + staff images adaptation
+### [ ] 3. Verify staff images load in browser (open index.html)
+### [ ] 4. Remove React/Vite files (src/, components/, etc.)
+### [ ] 5. Test full site: Navbar, scroll, mobile responsive, form
+### [ ] 6. Update README.md with deployment instructions
+### [ ] 7. Deploy to Vercel/Netlify
+### [ ] 8. Complete - attempt_completion
 
-## Notes
-- Build completed successfully with no errors
-- Preview server running on http://localhost:4173/
-- All React components and pages are properly implemented
-- Static files ready in dist/ folder for deployment
-- Namecheap hosting supports static HTML/CSS/JS files perfectly
+*Updated after each step.*
+

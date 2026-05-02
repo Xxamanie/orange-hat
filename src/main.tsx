@@ -4,6 +4,8 @@ import App from './App';
 import ErrorBoundary from './components/ErrorBoundary';
 import '../index.css';
 
+console.log('React app starting...');
+
 const container = document.getElementById('root');
 if (!container) {
   throw new Error('Root element not found');
@@ -18,3 +20,4 @@ root.render(
   </React.StrictMode>
 );
 // The `index.css` file should be present in the project's source directory.
+

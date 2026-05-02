@@ -1,4 +1,4 @@
-export const subscribeToNewsletter = async (formData: { name: string; email: string }) => {
+export const subscribeToNewsletter = async (_formData: { name: string; email: string }) => {
   try {
     // Simulate API call
     await new Promise(resolve => setTimeout(resolve, 1000));

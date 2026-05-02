@@ -15,6 +15,7 @@ export interface FormData {
 
 export interface ContactFormData extends FormData {
   subject: string;
+  message: string;
 }
 
 export interface VolunteerFormData extends FormData {
@@ -42,10 +43,19 @@ export interface Program {
   id: string;
   title: string;
   description: string;
+  shortDescription?: string;
   image: string;
   category: string;
   targetAge?: string;
   duration?: string;
+  story?: string;
+  media?: ProgramMedia[];
+}
+
+export interface ProgramMedia {
+  type: 'image' | 'video';
+  src: string;
+  caption: string;
 }
 
 export interface Stat {
@@ -68,4 +78,4 @@ export interface FormSubmissionResponse {
   message: string;
 }
 
-export type PageType = 'home' | 'about' | 'programs' | 'get-involved' | 'support' | 'contact' | 'media';
+export type PageType = 'home' | 'about' | 'programs' | 'program-details' | 'get-involved' | 'support' | 'contact' | 'media';

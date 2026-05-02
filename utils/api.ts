@@ -3,7 +3,7 @@ import { ApiResponse, FormSubmissionResponse } from '../types';
 const API_BASE_URL = process.env.VITE_API_BASE_URL || 'https://api.orangehat.org';
 
 // Generic API request function
-async function apiRequest<T>(
+export async function apiRequest<T>(
   endpoint: string,
   options: RequestInit = {}
 ): Promise<ApiResponse<T>> {

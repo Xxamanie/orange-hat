@@ -446,7 +446,7 @@ export const ImpactSection: React.FC = () => (
       <div className="impact-stat"><div className="impact-num">{programs.length}+</div><div className="impact-label">Active Programs</div></div>
       <div className="impact-stat"><div className="impact-num">9</div><div className="impact-label">Dedicated Staff</div></div>
       <div className="impact-stat"><div className="impact-num">20+</div><div className="impact-label">Annual Volunteers</div></div>
-      <div className="impact-stat"><div className="impact-num">5</div><div className="impact-label">Weeks of Summer Programming</div></div>
+      <div className="impact-stat"><div className="impact-num">5</div><div className="impact-label">Weeks of Summer Program</div></div>
       <div className="impact-stat"><div className="impact-num">2yr</div><div className="impact-label">Rooted House Journey</div></div>
     </div>
   </section>

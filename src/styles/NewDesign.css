@@ -377,7 +377,7 @@ section {
 
 .program-showcase-media {
   position: relative;
-  min-height: clamp(280px, 52vw, 640px);
+  min-height: clamp(180px, 30vw, 320px);
   overflow: hidden;
   isolation: isolate;
 }
@@ -743,7 +743,7 @@ footer .footer-links a:hover { color: var(--gold); }
   .hero-btns { justify-content: center; }
   .hero-visual { margin-top: 48px; }
 
-  .program-showcase-media { min-height: clamp(260px, 58vw, 460px); }
+  .program-showcase-media { min-height: clamp(170px, 34vw, 260px); }
   .program-card { min-height: clamp(260px, 62vw, 420px); }
 
   #contact { grid-template-columns: 1fr; }
@@ -766,7 +766,7 @@ footer .footer-links a:hover { color: var(--gold); }
   .hero-card-stack { width: 280px; height: 360px; }
   .staff-grid { grid-template-columns: repeat(2, 1fr); }
 
-  .program-showcase-media { min-height: clamp(220px, 62vw, 320px); }
+  .program-showcase-media { min-height: clamp(150px, 38vw, 220px); }
   .programs-title { padding: 56px 5% 28px; }
   .program-card { min-height: clamp(220px, 58vw, 320px); }
   .program-showcase-copy { inset: auto 5% 22px 5%; }

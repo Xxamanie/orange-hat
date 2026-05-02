@@ -99,6 +99,7 @@ const programDetails: Record<string, ProgramDetails> = {
 
 const HomePage: React.FC = () => {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [activeProgramId, setActiveProgramId] = useState<string | null>(null);
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -140,14 +141,14 @@ const HomePage: React.FC = () => {
         });
       });
 
-      gsap.from('.program-band', {
+      gsap.from('.pillar-card', {
         opacity: 0,
         y: 50,
         stagger: 0.15,
         duration: 0.8,
         immediateRender: false,
         scrollTrigger: {
-          trigger: '.programs-feature',
+          trigger: '.pillars-grid',
           start: 'top 85%',
         },
       });
@@ -179,6 +180,7 @@ const HomePage: React.FC = () => {
     const details = programDetails[program.id];
     return (
       <>
+        <p>{program.shortDescription}</p>
         <p>{program.description.split('\n\n')[0]}</p>
         {program.description.split('\n\n').slice(1).map((para, i) => (
           <p key={i}>{para}</p>
@@ -280,7 +282,7 @@ const HomePage: React.FC = () => {
       </div>
 
         {/* PROGRAMS */}
-        <section id="programs" className="programs-feature fade-in">
+        <section id="programs" className="pillars-grid fade-in">
         <div className="programs-header reveal">
           <div className="section-tag">What We Do</div>
           <h2 className="section-h2">Our <em>Programs</em></h2>
@@ -289,34 +291,55 @@ const HomePage: React.FC = () => {
           </p>
         </div>
 
-        <div className="program-band-list reveal">
-          {programs.map((program) => (
-            <article className="program-band" key={program.id}>
-              <div className="program-band-media">
-                <img
-                  src={encodeURI(withBase(program.image))}
-                  alt={program.title}
-                  className="program-band-image"
-                />
-                <div className="program-band-overlay" />
-                <div className="program-band-copy">
-                  <span className="program-band-category">{program.category}</span>
-                  <h3>{program.title}</h3>
-                </div>
-              </div>
+        <div className="program-card-grid reveal">
+          {programs.map((program) => {
+            const isActive = activeProgramId === program.id;
 
-              <div className="program-band-content">
-                <p className="program-band-summary">{program.shortDescription}</p>
-                <div className="program-band-meta">
-                  {program.targetAge && <span>{program.targetAge}</span>}
-                  {program.duration && <span>{program.duration}</span>}
+            return (
+              <article
+                className={`program-showcase-card pillar-card ${isActive ? 'is-active' : ''}`}
+                key={program.id}
+              >
+                <button
+                  type="button"
+                  className="program-showcase-trigger"
+                  onClick={() => setActiveProgramId(isActive ? null : program.id)}
+                  aria-expanded={isActive}
+                  aria-controls={`program-details-${program.id}`}
+                >
+                  <div className="program-showcase-media">
+                    <img
+                      src={encodeURI(withBase(program.image))}
+                      alt={program.title}
+                      className="program-showcase-image"
+                    />
+                    <div className="program-showcase-overlay" />
+                    <div className="program-showcase-glow" />
+                    <div className="program-showcase-copy">
+                      <span className="program-showcase-category">{program.category}</span>
+                      <h3>{program.title}</h3>
+                      <span className="program-showcase-cta">
+                        {isActive ? 'Hide details' : 'Tap to read more'}
+                      </span>
+                    </div>
+                  </div>
+                </button>
+
+                <div
+                  id={`program-details-${program.id}`}
+                  className={`program-showcase-details ${isActive ? 'is-open' : ''}`}
+                >
+                  <div className="program-showcase-meta">
+                    {program.targetAge && <span>{program.targetAge}</span>}
+                    {program.duration && <span>{program.duration}</span>}
+                  </div>
+                  <div className="program-showcase-body">
+                    {renderProgramContent(program)}
+                  </div>
                 </div>
-                <div className="program-band-body">
-                  {renderProgramContent(program)}
-                </div>
-              </div>
-            </article>
-          ))}
+              </article>
+            );
+          })}
         </div>
       </section>
 

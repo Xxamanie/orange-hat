@@ -207,7 +207,7 @@ section {
 }
 
 .programs-section {
-  padding: 120px 32px;
+  padding: 0;
   background: #fff;
   text-align: center;
 }
@@ -215,23 +215,27 @@ section {
 .programs-title {
   font-family: 'Cormorant Garamond', serif;
   font-size: 3rem;
-  margin-bottom: 60px;
+  margin: 0;
+  padding: 72px 5% 40px;
   color: var(--warm-dk);
 }
 
 .programs-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  width: 100%;
 }
 
 .program-card {
   position: relative;
-  height: 420px;
+  min-height: clamp(300px, 56vw, 620px);
+  width: 100%;
   overflow: hidden;
-  border-radius: 20px;
+  border-radius: 0;
   cursor: pointer;
-  background: linear-gradient(180deg, rgba(26,10,0,0.08), rgba(26,10,0,0.24));
+  background: #000;
+  margin: 0;
 }
 
 .program-image {
@@ -730,6 +734,7 @@ footer .footer-links a:hover { color: var(--gold); }
 
   .program-showcase-card { grid-column: span 6; }
   .program-showcase-media { min-height: 400px; }
+  .program-card { min-height: clamp(260px, 62vw, 420px); }
 
   #contact { grid-template-columns: 1fr; }
 
@@ -754,6 +759,8 @@ footer .footer-links a:hover { color: var(--gold); }
   .program-card-grid { grid-template-columns: 1fr; gap: 18px; }
   .program-showcase-card { grid-column: span 1; border-radius: 22px; }
   .program-showcase-media { min-height: 360px; }
+  .programs-title { padding: 56px 5% 28px; }
+  .program-card { min-height: clamp(220px, 58vw, 320px); }
   .program-showcase-copy { inset: auto 18px 18px 18px; }
   .program-showcase-copy h3 { font-size: clamp(1.55rem, 8vw, 2.1rem); }
   .program-showcase-card:hover .program-showcase-copy,

@@ -100,11 +100,6 @@ const programDetails: Record<string, ProgramDetails> = {
 const HomePage: React.FC = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const [activeProgramId, setActiveProgramId] = useState<string | null>(null);
-  const featuredPrograms = programs.slice(0, 3).map((program) => ({
-    title: program.title,
-    description: program.shortDescription,
-    image: encodeURI(withBase(program.image)),
-  }));
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -132,7 +127,6 @@ const HomePage: React.FC = () => {
       });
 
       gsap.utils.toArray<HTMLElement>('section').forEach((section) => {
-        // Delay rendering until scroll trigger activates to keep content visible by default.
         gsap.from(Array.from(section.children), {
           opacity: 0,
           y: 60,
@@ -166,19 +160,6 @@ const HomePage: React.FC = () => {
         immediateRender: false,
         scrollTrigger: {
           trigger: '.cta-section',
-          start: 'top 80%',
-        },
-      });
-
-      gsap.from('.program-card', {
-        opacity: 0,
-        y: 60,
-        stagger: 0.2,
-        duration: 1,
-        ease: 'power3.out',
-        immediateRender: false,
-        scrollTrigger: {
-          trigger: '.programs-section',
           start: 'top 80%',
         },
       });
@@ -299,28 +280,6 @@ const HomePage: React.FC = () => {
           </p>
         </div>
       </div>
-
-        {/* FEATURED PROGRAMS */}
-        <section className="programs-section">
-          <h2 className="programs-title">Our Programs</h2>
-
-          <div className="programs-grid">
-            {featuredPrograms.map((program) => (
-              <div className="program-card" key={program.title}>
-                <div
-                  className="program-image"
-                  style={{ backgroundImage: `url('${program.image}')` }}
-                ></div>
-                <div className="program-overlay"></div>
-
-                <div className="program-content">
-                  <h3>{program.title}</h3>
-                  <p>{program.description}</p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </section>
 
         {/* PROGRAMS */}
         <section id="programs" className="pillars-grid fade-in">

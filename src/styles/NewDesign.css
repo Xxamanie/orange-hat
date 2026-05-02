@@ -769,3 +769,213 @@ footer .footer-links a:hover { color: var(--gold); }
   }
   .program-showcase-details.is-open { padding: 20px 18px 24px; }
 }
+
+.programs-feature {
+  padding: 110px 0;
+  background:
+    linear-gradient(180deg, #fbf4ea 0%, #fffdf9 20%, #fbf5ee 100%);
+}
+
+.programs-feature .programs-header {
+  padding: 0 5% 40px;
+  text-align: center;
+}
+
+.programs-feature .programs-header .section-lead {
+  margin: 0 auto;
+}
+
+.program-band-list {
+  display: flex;
+  flex-direction: column;
+  gap: 52px;
+}
+
+.program-band {
+  width: 100%;
+}
+
+.program-band-media {
+  position: relative;
+  min-height: clamp(300px, 52vw, 640px);
+  overflow: hidden;
+  background: #120b06;
+}
+
+.program-band-image {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transform: scale(1.02);
+  filter: saturate(0.92) contrast(1.02);
+}
+
+.program-band-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(8, 5, 2, 0.12) 0%, rgba(8, 5, 2, 0.26) 52%, rgba(8, 5, 2, 0.62) 100%);
+}
+
+.program-band-copy {
+  position: absolute;
+  left: 5%;
+  right: 5%;
+  bottom: 34px;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 14px;
+}
+
+.program-band-category {
+  display: inline-flex;
+  align-items: center;
+  padding: 8px 14px;
+  border-radius: 999px;
+  background: rgba(255,255,255,0.16);
+  border: 1px solid rgba(255,255,255,0.24);
+  color: rgba(255,255,255,0.92);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  backdrop-filter: blur(8px);
+}
+
+.program-band-copy h3 {
+  margin: 0;
+  max-width: 12ch;
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2.25rem, 5vw, 4.6rem);
+  line-height: 0.94;
+  color: #fff7ef;
+  text-shadow: 0 12px 34px rgba(0,0,0,0.3);
+}
+
+.program-band-content {
+  width: min(980px, 90%);
+  margin: 0 auto;
+  padding: 26px 0 0;
+}
+
+.program-band-summary {
+  max-width: 42rem;
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(1.2rem, 2vw, 1.55rem);
+  line-height: 1.45;
+  color: var(--warm-dk);
+  margin-bottom: 18px;
+}
+
+.program-band-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.program-band-meta span,
+.program-band-content .pill {
+  display: inline-flex;
+  align-items: center;
+  padding: 7px 12px;
+  border-radius: 999px;
+  background: rgba(232,88,10,0.08);
+  border: 1px solid rgba(232,88,10,0.16);
+  color: var(--warm-md);
+  font-size: 0.76rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+}
+
+.program-band-body {
+  display: grid;
+  grid-template-columns: minmax(0, 1.4fr) minmax(220px, 0.9fr);
+  gap: 34px;
+  align-items: start;
+}
+
+.program-band-body p {
+  color: var(--muted);
+  line-height: 1.82;
+  font-size: 0.97rem;
+  margin-bottom: 14px;
+}
+
+.program-band-content .prog-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 8px;
+  align-content: flex-start;
+}
+
+.program-band-content .prog-list {
+  list-style: none;
+  margin-top: 2px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.program-band-content .prog-list li {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+  font-size: 0.95rem;
+  color: var(--muted);
+  line-height: 1.6;
+}
+
+.program-band-content .prog-list li::before {
+  content: '▸';
+  color: var(--orange);
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+@media (max-width: 900px) {
+  .program-band-media {
+    min-height: clamp(280px, 60vw, 460px);
+  }
+
+  .program-band-body {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+}
+
+@media (max-width: 600px) {
+  .programs-feature {
+    padding: 90px 0;
+  }
+
+  .programs-feature .programs-header {
+    padding: 0 5% 30px;
+  }
+
+  .program-band-list {
+    gap: 36px;
+  }
+
+  .program-band-media {
+    min-height: clamp(220px, 62vw, 320px);
+  }
+
+  .program-band-copy {
+    bottom: 22px;
+  }
+
+  .program-band-copy h3 {
+    max-width: 10ch;
+    font-size: clamp(1.8rem, 9vw, 2.5rem);
+  }
+
+  .program-band-content {
+    width: 90%;
+    padding-top: 20px;
+  }
+}

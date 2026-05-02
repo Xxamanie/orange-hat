@@ -400,6 +400,9 @@ section {
   object-fit: cover;
   filter: grayscale(1);
   transform: scale(1.01);
+  transition:
+    transform 900ms cubic-bezier(0.22, 1, 0.36, 1),
+    filter 900ms cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .program-showcase-overlay {
@@ -472,7 +475,7 @@ section {
 .program-showcase-card:hover .program-showcase-image,
 .program-showcase-card.is-active .program-showcase-image {
   filter: grayscale(0);
-  transform: scale(1.08);
+  transform: scale(1.1);
 }
 
 .program-showcase-card:hover .program-showcase-overlay,

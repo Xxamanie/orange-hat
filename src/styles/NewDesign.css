@@ -693,12 +693,13 @@ section {
 .contact-form h3 { font-family: 'Playfair Display', serif; font-size: 1.5rem; margin-bottom: 24px; color: var(--warm-dk); }
 
 .contact-tour-section {
-  padding: 96px 5% 110px;
+  padding: 82px 3% 110px;
   background: linear-gradient(180deg, #fff8f0 0%, #fffaf4 100%);
 }
 
 .contact-tour-intro {
-  margin-bottom: 40px;
+  margin: 0 auto 26px;
+  max-width: 980px;
   text-align: center;
 }
 
@@ -711,7 +712,8 @@ section {
   align-items: stretch;
   justify-content: flex-start;
   min-height: 520px;
-  max-width: 1260px;
+  width: 100%;
+  max-width: none;
   margin: 0 auto;
   padding: 0 0 24px;
   overflow-x: auto;
@@ -721,10 +723,10 @@ section {
 .contact-tour-card {
   display: block;
   position: relative;
-  flex: 0 0 min(46vw, 440px);
-  min-width: min(46vw, 440px);
+  flex: 0 0 min(44vw, 520px);
+  min-width: min(44vw, 520px);
   height: 520px;
-  margin-left: -28%;
+  margin-left: -22%;
   overflow: hidden;
   border-radius: 28px;
   background: #120b06;
@@ -1098,16 +1100,16 @@ footer .footer-links a:hover { color: var(--gold); }
   }
 
   .contact-tour-card {
-    flex-basis: min(54vw, 360px);
-    min-width: min(54vw, 360px);
+    flex-basis: min(58vw, 420px);
+    min-width: min(58vw, 420px);
     height: 420px;
-    margin-left: -24%;
+    margin-left: -18%;
   }
 }
 
 @media (max-width: 600px) {
   .contact-tour-section {
-    padding: 82px 5% 96px;
+    padding: 72px 5% 96px;
   }
 
   .contact-tour-deck {

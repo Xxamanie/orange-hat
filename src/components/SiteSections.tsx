@@ -489,6 +489,7 @@ export const StaffSection: React.FC = () => (
 
 export const ContactSection: React.FC = () => {
   const [activePath, setActivePath] = useState<ContactJourney['path']>(contactJourneys[0].path);
+  const activeIndex = contactJourneys.findIndex((journey) => journey.path === activePath);
 
   return (
     <section id="contact" className="contact-tour-section fade-in">
@@ -503,13 +504,32 @@ export const ContactSection: React.FC = () => {
       <div className="contact-tour-deck reveal">
         {contactJourneys.map((journey, index) => {
           const isActive = activePath === journey.path;
+          const distance = index - activeIndex;
+          const absDistance = Math.abs(distance);
+          const left = isActive
+            ? 28
+            : distance < 0
+              ? Math.max(0, 8 + index * 8)
+              : Math.min(76, 48 + (index - activeIndex - 1) * 8);
+          const scale = isActive ? 1 : Math.max(0.76, 0.92 - absDistance * 0.05);
+          const translateY = isActive ? 0 : 14 + absDistance * 10;
+          const opacity = isActive ? 1 : Math.max(0.68, 0.9 - absDistance * 0.08);
+          const zIndex = isActive ? 40 : 20 - absDistance - (distance > 0 ? 0 : 1);
 
           return (
             <a
               key={journey.path}
               href={routeHref(journey.path)}
               className={`contact-tour-card ${isActive ? 'is-active' : ''}`}
-              style={{ ['--stack-index' as string]: index } as React.CSSProperties}
+              style={
+                {
+                  ['--card-left' as string]: `${left}%`,
+                  ['--card-scale' as string]: scale,
+                  ['--card-y' as string]: `${translateY}px`,
+                  ['--card-opacity' as string]: opacity,
+                  ['--card-z' as string]: zIndex,
+                } as React.CSSProperties
+              }
               onMouseEnter={() => setActivePath(journey.path)}
               onFocus={() => setActivePath(journey.path)}
             >

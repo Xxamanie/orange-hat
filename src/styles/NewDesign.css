@@ -714,6 +714,7 @@ section {
 }
 
 .contact-tour-card {
+  display: block;
   position: absolute;
   top: 0;
   left: var(--card-left);

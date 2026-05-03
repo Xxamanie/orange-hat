@@ -492,7 +492,7 @@ export const ContactSection: React.FC = () => {
   const activeIndex = contactJourneys.findIndex((journey) => journey.path === activePath);
 
   return (
-    <section id="contact" className="contact-tour-section fade-in">
+    <section id="contact-journey" className="contact-tour-section fade-in">
       <div className="contact-tour-intro reveal">
         <div className="section-tag">Choose Your Next Step</div>
         <h2 className="section-h2">Move through the <em>Contact Journey</em></h2>

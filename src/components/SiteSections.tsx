@@ -506,15 +506,16 @@ export const ContactSection: React.FC = () => {
           const isActive = activePath === journey.path;
           const distance = index - activeIndex;
           const absDistance = Math.abs(distance);
+          const cardWidth = 34;
+          const exposedSlice = cardWidth / 3;
+          const activeLeft = (100 - cardWidth) / 2;
           const left = isActive
-            ? 28
-            : distance < 0
-              ? Math.max(0, 8 + index * 8)
-              : Math.min(76, 48 + (index - activeIndex - 1) * 8);
+            ? activeLeft
+            : activeLeft + distance * exposedSlice;
           const scale = isActive ? 1 : Math.max(0.76, 0.92 - absDistance * 0.05);
-          const translateY = isActive ? 0 : 14 + absDistance * 10;
+          const translateY = isActive ? 0 : absDistance * 8;
           const opacity = isActive ? 1 : Math.max(0.68, 0.9 - absDistance * 0.08);
-          const zIndex = isActive ? 40 : 20 - absDistance - (distance > 0 ? 0 : 1);
+          const zIndex = isActive ? 40 : 20 - absDistance;
 
           return (
             <a
@@ -524,6 +525,7 @@ export const ContactSection: React.FC = () => {
               style={
                 {
                   ['--card-left' as string]: `${left}%`,
+                  ['--card-width' as string]: `${cardWidth}%`,
                   ['--card-scale' as string]: scale,
                   ['--card-y' as string]: `${translateY}px`,
                   ['--card-opacity' as string]: opacity,

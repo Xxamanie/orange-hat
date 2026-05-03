@@ -725,7 +725,7 @@ section {
   position: absolute;
   top: 0;
   left: var(--card-left);
-  width: min(40vw, 500px);
+  width: var(--card-width, min(40vw, 500px));
   height: 520px;
   overflow: hidden;
   border-radius: 28px;

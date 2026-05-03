@@ -532,12 +532,7 @@ export const ContactSection: React.FC = () => {
                   ['--card-z' as string]: zIndex,
                 } as React.CSSProperties
               }
-              onClick={(event) => {
-                if (!isActive) {
-                  event.preventDefault();
-                  setActivePath(journey.path);
-                }
-              }}
+              onMouseEnter={() => setActivePath(journey.path)}
               onFocus={() => setActivePath(journey.path)}
             >
               <img

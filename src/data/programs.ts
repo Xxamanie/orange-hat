@@ -4,7 +4,7 @@ export const programs: Program[] = [
   {
     id: 'lovin-oven',
     title: "Lovin' Oven",
-    shortDescription: 'A baking and catering skill program for young women and caregivers.',
+    shortDescription: 'A baking and catering skill program for young women.',
     description: `This three month skill development program empowers young women to achieve financial independence through the art of baking. Our holistic curriculum covers professional baking techniques, essential entrepreneurship, and faith-based financial management. To ensure a successful launch, we provide each graduate with a starter kit of basic baking materials.`,
     image: "/images/lovin' oven.jpeg",
     category: 'Training',

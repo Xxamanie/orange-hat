@@ -497,7 +497,7 @@ export const ContactSection: React.FC = () => {
         <div className="section-tag">Choose Your Next Step</div>
         <h2 className="section-h2">Move through the <em>Contact Journey</em></h2>
         <p className="section-lead">
-          Instead of one crowded page, select the card that fits your reason for visiting. Each route opens its own focused page and carries the visitor deeper into the site.
+          Select the card that fits your reason for visiting. Each route opens its own focused page and carries into somthing bigger.
         </p>
       </div>
 

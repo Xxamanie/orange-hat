@@ -41,12 +41,12 @@ const withBase = (path: string) => {
 };
 
 const staffMembers = [
-  { name: 'Blessing Samuel', role: 'Director & Director of Programs', image: '/images/blessing.jpg' },
+  { name: 'Blessing Samuel', role: 'Director', image: '/images/blessing.jpg' },
   { name: 'Muniru Funke A.', role: 'Director of Operations', image: '/images/funke.jpg' },
   { name: 'Joel Katembue Tshibangu', role: 'HwoleMen & Youth Development Coordinator', image: '/images/joel.jpg' },
   { name: 'Jang Rachel', role: 'Reading Tutor', image: null },
   { name: 'Madugu Jideh Vincent', role: 'Academic Support Instructor', image: '/images/madugu-jideh-vincent.png' },
-  { name: 'Nuhu Celina', role: 'Lovin Oven / Baking Instructor', image: null },
+  { name: 'Nuhu Celina', role: 'Lovin Oven Baking Instructor', image: null },
   { name: 'Stella Nkem Oriaku', role: 'Residential Caregiver', image: null },
   { name: 'Nanna John', role: 'Residential Caregiver', image: '/images/nanna-john.jpg' },
   { name: 'Ukeni Onyinyechi Christiana', role: 'Residential Caregiver', image: '/images/onyinyechi-christiana.jpg' },

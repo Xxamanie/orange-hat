@@ -114,12 +114,11 @@ export const contactJourneys: ContactJourney[] = [
   {
     path: '/contact/give',
     title: 'Give Financially',
-    label: 'Give',
+    label: '',
     image: '/images/rooted house.jpeg',
     lead: 'Support Orange Hat through practical giving that strengthens programs, homes, and educational pathways.',
     body: [
-      'Financial giving helps sustain core needs across tutoring, residential support, discipleship, skill acquisition, and sponsorship care.',
-      'This page is designed for visitors who already know they want to contribute and need a focused path into that conversation.',
+      'Your gifts help sustain core needs across tutoring, residential support, discipleship, skill acquisition, and sponsorship care.',
     ],
     highlight: 'Fund learning, care, and long-term restoration.',
     cta: 'I want to support financially',
@@ -131,15 +130,15 @@ export const contactJourneys: ContactJourney[] = [
     image: '/images/holiday.jpeg',
     lead: 'Step into the work directly by offering your time, skills, energy, or presence where it is most useful.',
     body: [
-      'Volunteers can strengthen programming through tutoring, mentoring, logistics help, creative support, event service, and practical community engagement.',
-      'This route makes it easy for someone to say not just I care, but I am ready to show up.',
+      'Volunteers can strengthen any of our programs through tutoring, mentoring, logistics help, creative support, event service, and practical community engagement.',
+      'This route makes it easy for someone to say not just "I care", but I am ready to show up.',
     ],
     highlight: 'Join the work on the ground.',
     cta: 'I want to volunteer',
   },
   {
     path: '/contact/sponsor',
-    title: 'Sponsor A Student',
+    title: 'Sponsor A Child',
     label: 'Sponsor',
     image: '/images/learning center.jpg',
     lead: 'Help remove educational barriers by supporting a child or young person through tuition, materials, and ongoing care.',
@@ -410,7 +409,7 @@ export const ProgramsSection: React.FC = () => {
                     <span className="program-showcase-category">{program.category}</span>
                     <h3>{program.title}</h3>
                     <span className="program-showcase-cta">
-                      {isActive ? 'Hide details' : 'Tap to read more'}
+                      {isActive ? '' : 'Tap to read more'}
                     </span>
                   </div>
                 </div>
@@ -488,65 +487,81 @@ export const StaffSection: React.FC = () => (
 );
 
 export const ContactSection: React.FC = () => {
-  const [activePath, setActivePath] = useState<ContactJourney['path']>(contactJourneys[0].path);
-  const activeIndex = contactJourneys.findIndex((journey) => journey.path === activePath);
+  const [activePath, setActivePath] = useState<ContactJourney['path'] | null>(contactJourneys[0].path);
 
   return (
-    <section id="contact-journey" className="contact-tour-section fade-in">
-      <div className="contact-tour-intro reveal">
+    <section id="contact-journey" className="fade-in">
+      <div className="programs-header reveal">
         <div className="section-tag">Choose Your Next Step</div>
         <h2 className="section-h2">Move through the <em>Contact Journey</em></h2>
         <p className="section-lead">
-          Select the card that fits your reason for visiting. Each route opens its own focused page and carries into somthing bigger.
+          Select the card that fits your reason for visiting.
         </p>
       </div>
 
-      <div className="contact-tour-deck reveal">
-        {contactJourneys.map((journey, index) => {
+      <div className="program-card-grid reveal">
+        {contactJourneys.map((journey) => {
           const isActive = activePath === journey.path;
-          const distance = index - activeIndex;
-          const absDistance = Math.abs(distance);
-          const cardWidth = 34;
-          const exposedSlice = cardWidth / 3;
-          const activeLeft = (100 - cardWidth) / 2;
-          const left = isActive
-            ? activeLeft
-            : activeLeft + distance * exposedSlice;
-          const scale = isActive ? 1 : Math.max(0.76, 0.92 - absDistance * 0.05);
-          const translateY = isActive ? 0 : absDistance * 8;
-          const opacity = isActive ? 1 : Math.max(0.68, 0.9 - absDistance * 0.08);
-          const zIndex = isActive ? 40 : 20 - absDistance;
 
           return (
-            <a
+            <article
+              className={`program-showcase-card pillar-card ${isActive ? 'is-active' : ''}`}
               key={journey.path}
-              href={routeHref(journey.path)}
-              className={`contact-tour-card ${isActive ? 'is-active' : ''}`}
-              style={
-                {
-                  ['--card-left' as string]: `${left}%`,
-                  ['--card-width' as string]: `${cardWidth}%`,
-                  ['--card-scale' as string]: scale,
-                  ['--card-y' as string]: `${translateY}px`,
-                  ['--card-opacity' as string]: opacity,
-                  ['--card-z' as string]: zIndex,
-                } as React.CSSProperties
-              }
-              onMouseEnter={() => setActivePath(journey.path)}
-              onFocus={() => setActivePath(journey.path)}
             >
-              <img
-                src={encodeURI(withBase(journey.image))}
-                alt={journey.title}
-                className="contact-tour-card-image"
-              />
-              <div className="contact-tour-card-overlay" />
-              <div className="contact-tour-card-glow" />
-              <div className="contact-tour-card-copy">
-                <span>{journey.label}</span>
-                <h3>{journey.title}</h3>
+              <button
+                type="button"
+                className="program-showcase-trigger"
+                onClick={() => setActivePath(isActive ? null : journey.path)}
+                aria-expanded={isActive}
+                aria-controls={`contact-details-${journey.path}`}
+              >
+                <div className="program-showcase-media">
+                  <img
+                    src={encodeURI(withBase(journey.image))}
+                    alt={journey.title}
+                    className="program-showcase-image"
+                  />
+                  <div className="program-showcase-overlay" />
+                  <div className="program-showcase-glow" />
+                  <div className="program-showcase-copy">
+                    <span className="program-showcase-category">{journey.label}</span>
+                    <h3>{journey.title}</h3>
+                    <span className="program-showcase-cta">
+                      {isActive ? 'Hide details' : 'Tap to read more'}
+                    </span>
+                  </div>
+                </div>
+              </button>
+
+              <div
+                id={`contact-details-${journey.path}`}
+                className={`program-showcase-details ${isActive ? 'is-open' : ''}`}
+              >
+                <div className="program-showcase-meta">
+                  <span>{journey.highlight}</span>
+                </div>
+                <div className="program-showcase-body">
+                  <p>{journey.lead}</p>
+                  {journey.body.map((p, i) => (
+                    <p key={i}>{p}</p>
+                  ))}
+
+                  <div className="contact-highlight" style={{ marginTop: 22 }}>
+                    <span style={{ fontWeight: 800 }}>{journey.cta}</span>
+                  </div>
+                </div>
+
+                <div style={{ marginTop: 18 }}>
+                  <a
+                    className="form-submit"
+                    href={routeHref(journey.path)}
+                    style={{ textDecoration: 'none', display: 'inline-block' }}
+                  >
+                    Continue to this route -&gt;
+                  </a>
+                </div>
               </div>
-            </a>
+            </article>
           );
         })}
       </div>
@@ -554,64 +569,94 @@ export const ContactSection: React.FC = () => {
   );
 };
 
+
 export const ContactDetailSection: React.FC<{ journeyPath: ContactJourney['path'] }> = ({ journeyPath }) => {
   const journey = contactJourneys.find((item) => item.path === journeyPath) ?? contactJourneys[0];
+
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     alert('Message sent successfully!');
   };
 
   return (
-    <section id="contact" className="cta-section fade-in">
-      <div className="contact-left reveal">
+    <section id="contact" className="pillars-grid fade-in">
+      <div className="programs-header reveal">
         <div className="section-tag">Get In Touch</div>
-        <h2 className="section-h2">{journey.title}<br/><em>with Orange Hat</em></h2>
-        <p className="section-lead">{journey.lead}</p>
-        {journey.body.map((paragraph) => (
-          <p className="section-lead contact-detail-copy" key={paragraph}>{paragraph}</p>
-        ))}
-
-        <div className="contact-highlight">{journey.highlight}</div>
-
-        <div className="contact-item" style={{ marginTop: '36px' }}>
-          <div className="contact-icon">Mail</div>
-          <a href="mailto:orangehatjoy@gmail.com">orangehatjoy@gmail.com</a>
-        </div>
-        <div className="contact-item">
-          <div className="contact-icon">Place</div>
-          <span>Nigeria (Jos, Plateau State)</span>
-        </div>
-        <div className="contact-item">
-          <div className="contact-icon">Faith</div>
-          <span>Faith-Based . Community-Driven . Christ-Centered</span>
-        </div>
+        <h2 className="section-h2">{journey.title} <em>with Orange Hat</em></h2>
+        <p className="section-lead">
+          A focused contact route built on the same immersive card experience as the programs page.
+        </p>
       </div>
 
-      <div className="contact-form reveal">
-        <form onSubmit={handleSubmit}>
-          <h3>{journey.cta}</h3>
-          <div className="form-group">
-            <label>Full Name</label>
-            <input type="text" placeholder="Your name" required />
+      <div className="program-card-grid reveal">
+        <article className="program-showcase-card pillar-card is-active">
+          <div className="program-showcase-media">
+            <img
+              src={encodeURI(withBase(journey.image))}
+              alt={journey.title}
+              className="program-showcase-image"
+            />
+            <div className="program-showcase-overlay" />
+            <div className="program-showcase-glow" />
+            <div className="program-showcase-copy">
+              <span className="program-showcase-category">{journey.label}</span>
+              <h3>{journey.title}</h3>
+              <span className="program-showcase-cta">Ready to reach out</span>
+            </div>
           </div>
-          <div className="form-group">
-            <label>Email Address</label>
-            <input type="email" placeholder="your@email.com" required />
+
+          <div id={`contact-details-${journey.path}`} className="program-showcase-details is-open">
+            <div className="program-showcase-meta">
+              <span>{journey.highlight}</span>              
+            </div>
+
+            <div className="program-showcase-body">
+              <p>{journey.lead}</p>
+              {journey.body.map((paragraph) => (
+                <p key={paragraph}>{paragraph}</p>
+              ))}              
+
+              <ul className="prog-list">
+                <li><strong>Email</strong> - orangehatjoy@gmail.com</li>
+                <li><strong>Location</strong> - Nigeria (Jos, Plateau State)</li>
+                <li><strong>Approach</strong> - Faith-rooted, practical, and community-led collaboration.</li>
+              </ul>
+            </div>
+
+            <div className="contact-route-form-wrap">
+              <form onSubmit={handleSubmit} className="contact-route-form">
+                <h3>{journey.cta}</h3>
+                <div className="contact-route-grid">
+                  <div className="form-group">
+                    <label htmlFor="contact-name">Full Name</label>
+                    <input id="contact-name" type="text" placeholder="Your name" required />
+                  </div>
+                  <div className="form-group">
+                    <label htmlFor="contact-email">Email Address</label>
+                    <input id="contact-email" type="email" placeholder="your@email.com" required />
+                  </div>
+                </div>
+                <div className="form-group">
+                  <label htmlFor="contact-interest">I want to...</label>
+                  <select id="contact-interest" defaultValue={journey.title}>
+                    {contactJourneys.map((item) => (
+                      <option key={item.path} value={item.title}>{item.title}</option>
+                    ))}
+                  </select>
+                </div>
+                <div className="form-group">
+                  <label htmlFor="contact-message">Message</label>
+                  <textarea
+                    id="contact-message"
+                    placeholder="Tell us a bit about yourself and how you'd like to help..."
+                    required
+                  ></textarea>
+                </div>
+                <button type="submit" className="form-submit">Send Message -&gt;</button>
+              </form>
+            </div>
           </div>
-          <div className="form-group">
-            <label>I want to...</label>
-            <select>
-              {contactJourneys.map((item) => (
-                <option key={item.path}>{item.title}</option>
-              ))}
-            </select>
-          </div>
-          <div className="form-group">
-            <label>Message</label>
-            <textarea placeholder="Tell us a bit about yourself and how you'd like to help..." required></textarea>
-          </div>
-          <button type="submit" className="form-submit">Send Message -&gt;</button>
-        </form>
+        </article>
       </div>
     </section>
   );

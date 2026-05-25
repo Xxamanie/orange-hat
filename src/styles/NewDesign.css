@@ -681,6 +681,7 @@ section {
 .contact-item {
   display: flex; align-items: center; gap: 14px; margin-bottom: 18px;
 }
+
 .contact-icon {
   width: 44px; height: 44px; border-radius: 12px; flex-shrink: 0;
   background: rgba(232,88,10,0.12);
@@ -882,6 +883,57 @@ section {
 }
 .form-group input:focus, .form-group textarea:focus { border-color: var(--orange); background: white; }
 .form-group textarea { resize: vertical; min-height: 110px; }
+
+.contact-route-form-wrap {
+  width: min(980px, 100%);
+  margin: 28px auto 0;
+}
+
+.contact-route-form {
+  padding: 28px;
+  border-radius: 24px;
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.12);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.06);
+}
+
+.contact-route-form h3 {
+  margin-bottom: 20px;
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(1.6rem, 3vw, 2.2rem);
+  color: white;
+}
+
+.contact-route-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.contact-route-form .form-group label {
+  color: rgba(255,255,255,0.86);
+}
+
+.contact-route-form .form-group input,
+.contact-route-form .form-group textarea,
+.contact-route-form .form-group select {
+  border-color: rgba(255,255,255,0.14);
+  background: rgba(255,248,240,0.08);
+  color: white;
+}
+
+.contact-route-form .form-group input::placeholder,
+.contact-route-form .form-group textarea::placeholder {
+  color: rgba(255,255,255,0.52);
+}
+
+.contact-route-form .form-group input:focus,
+.contact-route-form .form-group textarea:focus,
+.contact-route-form .form-group select:focus {
+  border-color: rgba(249,115,22,0.72);
+  background: rgba(255,255,255,0.12);
+}
+
 .form-submit {
   width: 100%; background: var(--orange); color: white; border: none; padding: 14px;
   border-radius: 10px; font-family: 'DM Sans', sans-serif; font-weight: 600; font-size: 1rem;
@@ -931,8 +983,6 @@ footer .footer-links a:hover { color: var(--gold); }
   .program-showcase-media { min-height: clamp(170px, 34vw, 260px); }
   .program-card { min-height: clamp(260px, 62vw, 420px); }
 
-  .cta-section { grid-template-columns: 1fr; }
-
   .nav-links, .nav-cta { display: none; }
   .hamburger { display: flex; }
 
@@ -962,6 +1012,15 @@ footer .footer-links a:hover { color: var(--gold); }
     inset: 50% 5% auto 5%;
   }
   .program-showcase-details.is-open { padding: 20px 5% 24px; }
+
+  .contact-route-form {
+    padding: 20px;
+  }
+
+  .contact-route-grid {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
 }
 
 .page-hero {

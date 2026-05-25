@@ -1,15 +1,5 @@
-# Orange Hat Website Transformation TODO
-
-## Status: In Progress
-
-### [x] 1. Backup current index.html
-### [ ] 2. Overwrite index.html with target HTML + staff images adaptation
-### [ ] 3. Verify staff images load in browser (open index.html)
-### [ ] 4. Remove React/Vite files (src/, components/, etc.)
-### [ ] 5. Test full site: Navbar, scroll, mobile responsive, form
-### [ ] 6. Update README.md with deployment instructions
-### [ ] 7. Deploy to Vercel/Netlify
-### [ ] 8. Complete - attempt_completion
-
-*Updated after each step.*
+- [ ] Refactor `ContactSection` to use the same expandable card DOM/classes as `ProgramsSection`.
+- [ ] Refactor `ContactDetailSection` to render inside the expanded details panel (same pattern as `program-showcase-details`).
+- [ ] Update `NewDesign.css` only if required to ensure styling/spacing matches Programs.
+- [ ] Run build/typecheck and visually verify hover/focus/expand behavior on desktop + mobile breakpoints.
 

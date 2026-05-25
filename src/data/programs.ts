@@ -55,7 +55,7 @@ Our curriculum is split into two primary tracks:
 Rooted House is a comprehensive, two-year residential program designed for vulnerable young women, teen mothers, and expectant mothers. We provide more than just a roof; we provide a foundation for a renewed life. Our mission is to transition young women from crisis to confidence through a holistic, Christ-centered approach over twenty-four months of intentional growth.
 
 Our comprehensive support includes:
-- Total care and wellness: A safe home, nutritious meals, clothing, and full coverage of medical expenses.
+- Total care and wellness: A safe home, meals, clothing, and full coverage of medical expenses.
 - Education and literacy: Foundational literacy support and intensive preparatory tutoring for WAEC, NECO, and JAMB.
 - Vocational empowerment: Training in professional skills such as culinary arts, baking, and collaborative business management.
 - Spiritual discipleship: Faith-based mentorship and stewardship that helps women discover purpose.
@@ -89,13 +89,7 @@ Program highlights:
     id: 'educational-sponsorship',
     title: 'Comprehensive Educational Sponsorship',
     shortDescription: 'Full-circle support that removes financial barriers to education.',
-    description: `We believe that a brilliant mind should never be limited by an empty pocket. Our sponsorship pathway removes obstacles between a motivated student and meaningful academic progress.
-
-Total care commitment includes:
-- Primary and secondary support: Tuition, uniforms, shoes, textbooks, and stationery.
-- University support: Tuition, hostel accommodation, electricity, data, and study essentials.
-- Living essentials: Foodstuffs, toiletries, transportation allowance, and stipend.
-- Academic advocacy: Teacher consultation, progress monitoring, tutoring, and homework support.`,
+    description: `We believe that a brilliant mind should never be limited by an empty pocket. Our sponsorship pathway removes obstacles between a motivated student and meaningful academic progress.`,
 
     image: '/images/learning center.jpg',
     category: 'Sponsorship',
@@ -112,8 +106,6 @@ Total care commitment includes:
 Every August, we transform our learning space into a global adventure that runs through the first week of September. This Bible-based summer program invites children and teens to explore God's world through the lens of science, scripture, and skill-building.
 
 We do not just lecture, we sing! We use music as a primary teaching tool because songs stick! Whether learning a new language or a scientific concept, our students sing their way to mastery.
-
-Skills and arts tracks include baking, barbing, computer science, carpentry, engineering, French, crop and animal farming, dance, music, drama, visual arts, and crafts.
 
 Each day combines spiritual grounding and academic excitement through worship, dance, Bible study, and music-based learning.`,
     image: '/images/holiday.jpeg',

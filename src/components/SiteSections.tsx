@@ -55,7 +55,6 @@ const staffMembers = [
 const programDetails: Record<string, ProgramDetails> = {
   'lovin-oven': {
     pills: ['Professional Baking', 'Entrepreneurship', 'Starter Kit', 'Faith & Finance'],
-    firstPara: 'To ensure a successful launch, we provide each graduate with a starter kit of basic baking materials - the seeds of their own thriving business.',
   },
   hwolemen: {
     list: [
@@ -169,8 +168,7 @@ export const contactJourneys: ContactJourney[] = [
     image: '/images/blessing.jpg',
     lead: 'Start with a conversation if you want to learn more before choosing how to engage.',
     body: [
-      'Some visitors are still deciding, comparing options, or looking for clarity around a specific program or need.',
-      'This route keeps the experience open and welcoming while still feeling guided and intentional.',
+      'Are still deciding, comparing options, or looking for clarity around a specific program or need?',
     ],
     highlight: 'Get clarity before taking your next step.',
     cta: 'I have a question',
@@ -582,10 +580,7 @@ export const ContactDetailSection: React.FC<{ journeyPath: ContactJourney['path'
     <section id="contact" className="pillars-grid fade-in">
       <div className="programs-header reveal">
         <div className="section-tag">Get In Touch</div>
-        <h2 className="section-h2">{journey.title} <em>with Orange Hat</em></h2>
-        <p className="section-lead">
-          A focused contact route built on the same immersive card experience as the programs page.
-        </p>
+        <h2 className="section-h2">{journey.title} <em>with Orange Hat</em></h2>       
       </div>
 
       <div className="program-card-grid reveal">

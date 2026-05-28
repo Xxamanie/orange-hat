@@ -47,7 +47,7 @@ const staffMembers = [
   { name: 'Jang Rachel', role: 'Reading Tutor', image: '/images/rachael.png' },
   { name: 'Madugu Jideh Vincent', role: 'Academic Support Instructor', image: '/images/madugu-jideh-vincent.png' },
   { name: 'Nuhu Celina', role: 'Lovin Oven Baking Instructor', image: null },
-  { name: 'Stella Nkem Oriaku', role: 'Residential Caregiver', image: null },
+  { name: 'Stella Nkem Oriaku', role: 'Residential Caregiver', image: '/images/stela.jpg' },
   { name: 'Nanna John', role: 'Residential Caregiver', image: '/images/nanna-john.jpg' },
   { name: 'Ukeni Onyinyechi Christiana', role: 'Residential Caregiver', image: '/images/onyinyechi-christiana.jpg' },
 ];

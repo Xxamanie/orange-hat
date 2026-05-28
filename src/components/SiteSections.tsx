@@ -463,12 +463,6 @@ export const StaffSection: React.FC = () => (
       ))}
     </div>
 
-    <div className="staff-video-placeholder reveal" style={{ marginTop: '48px' }}>
-      <div className="vid-icon">Video</div>
-      <p><strong style={{ color: 'rgba(255,255,255,.8)' }}>Team Photo and Intro Video</strong><br/>
-      A group photo of all staff and a welcome video from the team will appear here.<br/>
-      Please upload your team photo and video to replace this placeholder.</p>
-    </div>
   </section>
 );
 

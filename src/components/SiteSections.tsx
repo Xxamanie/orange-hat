@@ -114,7 +114,7 @@ export const contactJourneys: ContactJourney[] = [
     path: '/contact/volunteer',
     title: 'Volunteer Your Time',
     label: 'Volunteer',
-    image: '/images/holiday.jpeg',
+    image: '/images/nanna-john.jpg',
     lead: 'Step into the work directly by offering your time, skills, energy, or presence where it is most useful.',
     body: [
       'Volunteers can strengthen any of our programs through tutoring, mentoring, logistics help, creative support, event service, and practical community engagement.',

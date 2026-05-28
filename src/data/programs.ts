@@ -83,7 +83,7 @@ Program highlights:
     category: 'Education',
     targetAge: 'Children',
     duration: '3 days/week',
-    media: [{ type: 'image', src: '/images/after school adventure.jpeg', caption: 'After-school reading and activity circle' }],
+    media: [{ type: 'image', src: '/images/asabe.png', caption: 'After-school reading and activity circle' }],
   },
   {
     id: 'educational-sponsorship',

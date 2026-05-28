@@ -44,7 +44,7 @@ const staffMembers = [
   { name: 'Blessing Samuel', role: 'Director', image: '/images/blessing.jpg' },
   { name: 'Muniru Funke A.', role: 'Director of Operations', image: '/images/funke.jpg' },
   { name: 'Joel Katembue Tshibangu', role: 'HwoleMen & Youth Development Coordinator', image: '/images/joel.jpg' },
-  { name: 'Jang Rachel', role: 'Reading Tutor', image: null },
+  { name: 'Jang Rachel', role: 'Reading Tutor', image: '/images/rachael.png' },
   { name: 'Madugu Jideh Vincent', role: 'Academic Support Instructor', image: '/images/madugu-jideh-vincent.png' },
   { name: 'Nuhu Celina', role: 'Lovin Oven Baking Instructor', image: null },
   { name: 'Stella Nkem Oriaku', role: 'Residential Caregiver', image: null },
@@ -56,7 +56,7 @@ const programDetails: Record<string, ProgramDetails> = {
   'lovin-oven': {
     pills: ['Professional Baking', 'Entrepreneurship', 'Starter Kit', 'Faith & Finance'],
   },
-  hwolemen: {
+  'hwolemen': {
     list: [
       { strong: 'Rehabilitation', text: 'Breaking old cycles and healing from the past.' },
       { strong: 'Discipleship', text: 'Grounding men in faith and spiritual maturity.' },

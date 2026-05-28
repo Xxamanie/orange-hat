@@ -87,11 +87,6 @@ const programDetails: Record<string, ProgramDetails> = {
   },
   'holiday-orange-hat': {
     pills: ['Baking', 'Music', 'Dance', 'Drama', 'Agri-Science', 'French', 'Computer Science'],
-    list: [
-      { strong: 'South America (Ages 3-5)', text: 'Foundational play and storytelling.' },
-      { strong: 'Asia (Ages 6-12)', text: 'Core academic and creative foundations.' },
-      { strong: 'Australia (Ages 13+)', text: 'Advanced skills and leadership.' },
-    ],
   },
 };
 

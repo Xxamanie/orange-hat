@@ -102,7 +102,7 @@ export const contactJourneys: ContactJourney[] = [
     path: '/contact/give',
     title: 'Give Financially',
     label: '',
-    image: '/images/rooted house.jpeg',
+    image: '/images/onyinyechi-christiana.jpg',
     lead: 'Support Orange Hat through practical giving that strengthens programs, homes, and educational pathways.',
     body: [
       'Your gifts help sustain core needs across tutoring, residential support, discipleship, skill acquisition, and sponsorship care.',

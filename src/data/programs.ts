@@ -79,7 +79,7 @@ Program highlights:
 - Beyond the curriculum: Essential life skills and creative subjects that conventional schools often miss.
 - Bridging the gap: Foundational support in literacy and numeracy for children who need extra help.
 - A personalized path: We meet each child where they are rather than grouping only by age.`,
-    image: '/images/after school adventure.jpeg',
+    image: '/images/asabe.png',
     category: 'Education',
     targetAge: 'Children',
     duration: '3 days/week',

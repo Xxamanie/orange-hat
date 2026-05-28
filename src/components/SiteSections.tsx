@@ -85,13 +85,6 @@ const programDetails: Record<string, ProgramDetails> = {
       { strong: 'A Personalized Path', text: 'We meet each child where they are; no one is rushed.' },
     ],
   },
-  'educational-sponsorship': {
-    list: [
-      { strong: 'Primary & Secondary', text: 'Tuition, uniforms, shoes, textbooks, and stationery.' },
-      { strong: 'University', text: 'Full tuition, hostel, electricity, data, and living essentials.' },
-      { strong: 'Academic Advocacy', text: 'Open Day consultations, tutoring, and homework support.' },
-    ],
-  },
   'holiday-orange-hat': {
     pills: ['Baking', 'Music', 'Dance', 'Drama', 'Agri-Science', 'French', 'Computer Science'],
     list: [

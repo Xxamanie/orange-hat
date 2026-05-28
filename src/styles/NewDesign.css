@@ -28,10 +28,15 @@ body {
 }
 
 /* -- NAVBAR -- */
-.navbar,
-nav {
-  position: sticky; top: 0; left: 0; right: 0; z-index: 999;
-  display: flex; align-items: center; justify-content: space-between;
+.navbar {
+  position: sticky;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 999;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   padding: 0 5%;
   height: 72px;
   background: rgba(255,255,255,0.75);
@@ -39,6 +44,7 @@ nav {
   border-bottom: 1.5px solid rgba(232,88,10,0.15);
   transition: all 0.3s ease;
 }
+
 
 .logo-wrap { display: flex; align-items: center; gap: 12px; text-decoration: none; }
 .logo-circle {

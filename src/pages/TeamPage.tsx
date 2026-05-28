@@ -8,7 +8,7 @@ const TeamPage: React.FC = () => {
         eyebrow="Our Team"
         title={<>The people carrying the <em>work</em></>}
         lead="Meet the educators, caregivers, and leaders who help turn Orange Hat's mission into everyday action."
-        image="/images/blessing.jpg"
+        image="/images/faces.png"
       />
       <StaffSection />
     </>

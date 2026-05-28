@@ -72,7 +72,7 @@ const programDetails: Record<string, ProgramDetails> = {
   },
   'rooted-house': {
     list: [
-      { strong: 'Total Care & Wellness', text: 'Safe home, meals, clothing, medical coverage, and monthly stipend.' },
+      { strong: 'Total Care & Wellness', text: 'Safe home, meals, clothing, medical coverage.' },
       { strong: 'Education & Literacy', text: 'Foundational literacy through WAEC/JAMB prep.' },
       { strong: 'Vocational Empowerment', text: 'Culinary arts, baking, and business management.' },
       { strong: 'Spiritual Discipleship', text: 'Faith, purpose, and godly stewardship.' },

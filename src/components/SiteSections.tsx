@@ -66,8 +66,8 @@ const programDetails: Record<string, ProgramDetails> = {
   },
   'learning-center': {
     list: [
-      { strong: 'Foundational Literacy & Numeracy', text: 'Patient, structured learning for adult learners and out-of-school youth.' },
-      { strong: 'Examination Preparatory Track', text: 'Intensive coaching for WAEC, NECO, and JAMB national exams.' },
+      { strong: 'Foundational Literacy & Numeracy', text: 'We provide a patient, structured environment for adult learners and out-of-school youth to master basic reading and writing. Our tutors focus on building confidence alongside core competencies.' },
+      { strong: 'Examination Preparatory Track', text: 'For those looking to advance their academic careers, we offer intensive coaching for national exit and entrance examinations, including WAEC, NECO, and JAMB. Our goal is to ensure every student is equipped with the knowledge and strategy needed to excel.' },
     ],
   },
   'rooted-house': {
@@ -76,13 +76,15 @@ const programDetails: Record<string, ProgramDetails> = {
       { strong: 'Education & Literacy', text: 'Foundational literacy through WAEC/JAMB prep.' },
       { strong: 'Vocational Empowerment', text: 'Culinary arts, baking, and business management.' },
       { strong: 'Spiritual Discipleship', text: 'Faith, purpose, and godly stewardship.' },
+      { strong: 'Graduation Goal', text: 'The goal is that by the end of the two-year journey, residents graduate as purpose-driven, independent young adults.' }
     ],
+    
   },
   'after-school-adventures': {
     list: [
-      { strong: 'Beyond the Curriculum', text: 'Life skills and creative subjects conventional schools often miss.' },
-      { strong: 'Bridging the Gap', text: 'Patient, foundational support in literacy and numeracy.' },
-      { strong: 'A Personalized Path', text: 'We meet each child where they are; no one is rushed.' },
+      { strong: 'Beyond the Curriculum', text: 'Essential life skills and creative subjects that conventional schools often miss.' },
+      { strong: 'Bridging the Gap', text: 'Foundational support in literacy and numeracy for children who need extra help.' },
+      { strong: 'A Personalized Path', text: 'We meet each child where they are rather than grouping only by age.' },
     ],
   },
   'holiday-orange-hat': {
@@ -553,9 +555,39 @@ export const ContactSection: React.FC = () => {
 export const ContactDetailSection: React.FC<{ journeyPath: ContactJourney['path'] }> = ({ journeyPath }) => {
   const journey = contactJourneys.find((item) => item.path === journeyPath) ?? contactJourneys[0];
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+
+    const form = e.currentTarget;
+    const formData = new FormData(form);
+
+    const payload = {
+      name: String(formData.get('contact-name') ?? ''),
+      email: String(formData.get('contact-email') ?? ''),
+      interest: String(formData.get('contact-interest') ?? ''),
+      phone: String(formData.get('contact-phone') ?? ''),
+      message: String(formData.get('contact-message') ?? ''),
+      // Honeypot
+      hp: String(formData.get('hp') ?? ''),
+    };
+
+    const resp = await fetch('/api/contact', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(payload),
+    });
+
+    const data = (await resp.json().catch(() => null)) as null | { success?: boolean; message?: string };
+
+    if (!resp.ok || !data?.success) {
+      alert(data?.message || 'Failed to send message');
+      return;
+    }
+
     alert('Message sent successfully!');
+    form.reset();
   };
 
   return (
@@ -606,16 +638,19 @@ export const ContactDetailSection: React.FC<{ journeyPath: ContactJourney['path'
                 <div className="contact-route-grid">
                   <div className="form-group">
                     <label htmlFor="contact-name">Full Name</label>
-                    <input id="contact-name" type="text" placeholder="Your name" required />
+                    <input id="contact-name" name="contact-name" type="text" placeholder="Your name" required />
                   </div>
                   <div className="form-group">
                     <label htmlFor="contact-email">Email Address</label>
-                    <input id="contact-email" type="email" placeholder="your@email.com" required />
+                    <input id="contact-email" name="contact-email" type="email" placeholder="your@email.com" required />
                   </div>
                 </div>
                 <div className="form-group">
                   <label htmlFor="contact-interest">I want to...</label>
-                  <select id="contact-interest" defaultValue={journey.title}>
+                  <select id="contact-interest" name="contact-interest" defaultValue={journey.title}>
+                    <option value={journey.title} disabled hidden>
+                      {journey.title}
+                    </option>
                     {contactJourneys.map((item) => (
                       <option key={item.path} value={item.title}>{item.title}</option>
                     ))}
@@ -624,10 +659,14 @@ export const ContactDetailSection: React.FC<{ journeyPath: ContactJourney['path'
                 <div className="form-group">
                   <label htmlFor="contact-message">Message</label>
                   <textarea
-                    id="contact-message"
+                    id="contact-message" name="contact-message"
                     placeholder="Tell us a bit about yourself and how you'd like to help..."
                     required
                   ></textarea>
+                  {/* honeypot field (spam prevention) */}
+                  <div style={{ display: 'none' }}>
+                    <input type="text" name="hp" tabIndex={-1} autoComplete="off" />
+                  </div>
                 </div>
                 <button type="submit" className="form-submit">Send Message -&gt;</button>
               </form>

@@ -2,17 +2,17 @@
 
 export const APP_CONFIG = {
   name: import.meta.env.VITE_ORG_NAME || 'Orange Hat Childcare Foundation',
-  email: import.meta.env.VITE_CONTACT_EMAIL || 'info@orangehat.org',
+  email: import.meta.env.VITE_CONTACT_EMAIL || 'info@orange-hat.org',
   phone: import.meta.env.VITE_PHONE_NUMBER || '+234-XXX-XXX-XXXX',
   address: import.meta.env.VITE_ORG_ADDRESS || 'COCIN Church Jiyep, Hwolshe, Jos, Plateau State, Nigeria',
-  website: 'https://orangehat.org',
+  website: 'https://orange-hat.org',
   vision: 'To create a safe space of discovery where children and their caregivers can grow spiritually, relationally, and academically to positively impact their world.',
   founded: '2018',
   ngoRegistration: '2024',
 };
 
 export const API_CONFIG = {
-  baseUrl: import.meta.env.VITE_API_BASE_URL || 'https://api.orangehat.org',
+  baseUrl: import.meta.env.VITE_API_BASE_URL || 'https://api.orange-hat.org',
   timeout: 10000, // 10 seconds
 };
 

@@ -1,0 +1,4 @@
+Install steps:
+1) npm install (project root) to get nodemailer types.
+2) Ensure @vercel/node is available or change api/contact.ts to use express/undici without @vercel/node types.
+

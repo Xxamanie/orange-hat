@@ -87,6 +87,13 @@ const programDetails: Record<string, ProgramDetails> = {
       { strong: 'A Personalized Path', text: 'We meet each child where they are rather than grouping only by age.' },
     ],
   },
+  'comprehensive-educational-sponsorship': {
+    list: [
+      { strong: 'Basic Education (Primary & Secondary):', text: 'Every sponsored student receives a complete back-to-school package covering; tuition, uniforms, shoes, textbooks, and stationery, so they can walk into school feeling ready and dignified.' },
+      { strong: 'Higher Education (University):', text: 'We walk alongside our university students through their entire academic journey. From tuition and study materials to accommodation, feeding, and transportation — every essential need is taken care of, so they can give their full attention to learning and growing.' },
+      { strong: 'Academic Support:', text: 'We attend Open Days to monitor progress and consult with teachers. Younger students also receive dedicated after-school tutoring and homework help.' },
+    ],
+  },
   'holiday-orange-hat': {
     pills: ['Baking', 'Music', 'Dance', 'Drama', 'Agri-Science', 'French', 'Computer Science'],
   },
@@ -100,64 +107,69 @@ const navItems: Array<{ label: string; path: RoutePath }> = [
 ];
 
 export const contactJourneys: ContactJourney[] = [
+  {path: '/contact/sponsor',
+    title: 'Sponsor A Child',
+    label: 'Sponsor',
+    image: '/images/learning center.jpg',
+    lead: 'Wvery child desers the xhance to learn, grow, and thrive.',
+    body: [
+      'By sponsoring a child or young person, you provide more then school fees- you open doors through books, supplies, accademic monetoring, and the kind of relational care that keeps a child going even when life is hard.',
+
+      'This is for someone who wants their giving to have a name, a face, and a clear outcome.',
+    ],
+    highlight: 'Back a student with consistent support.',
+    cta: 'I want to sponsor a student',
+    
+  },
   {
     path: '/contact/give',
     title: 'Give Financially',
     label: '',
     image: '/images/onyinyechi-christiana.jpg',
-    lead: 'Support Orange Hat through practical giving that strengthens programs, homes, and educational pathways.',
+    lead: 'Support Orange Hat through intentional giving that strengthens our programmes, homes, and educational pathways.',
     body: [
-      'Your gifts help sustain core needs across tutoring, residential support, discipleship, skill acquisition, and sponsorship care.',
+      'Every gifts helps sustain the work across tutoring, residential support, discipleship, skill acquisition, and sponsorship care.',
     ],
     highlight: 'Fund learning, care, and long-term restoration.',
     cta: 'I want to support financially',
-  },
-  {
-    path: '/contact/volunteer',
-    title: 'Volunteer Your Time',
-    label: 'Volunteer',
-    image: '/images/nanna-john.jpg',
-    lead: 'Step into the work directly by offering your time, skills, energy, or presence where it is most useful.',
-    body: [
-      'Volunteers can strengthen any of our programs through tutoring, mentoring, logistics help, creative support, event service, and practical community engagement.',
-      'This route makes it easy for someone to say not just "I care", but I am ready to show up.',
-    ],
-    highlight: 'Join the work on the ground.',
-    cta: 'I want to volunteer',
-  },
-  {
-    path: '/contact/sponsor',
-    title: 'Sponsor A Child',
-    label: 'Sponsor',
-    image: '/images/learning center.jpg',
-    lead: 'Help remove educational barriers by supporting a child or young person through tuition, materials, and ongoing care.',
-    body: [
-      'Sponsorship reaches beyond school fees into books, uniforms, supplies, academic monitoring, and the relational support needed for progress.',
-      'This destination speaks to visitors who want their giving tied to a clear educational outcome.',
-    ],
-    highlight: 'Back a student with consistent support.',
-    cta: 'I want to sponsor a student',
+    
   },
   {
     path: '/contact/partner',
     title: 'Build A Partnership',
     label: 'Partner',
     image: '/images/joel.jpg',
-    lead: 'Explore institutional, ministry, business, or strategic collaboration with Orange Hat.',
+    lead: 'We belief that lasting change is built through meaningful relationships.',
     body: [
-      'Partnerships can take the form of funding, expertise, in-kind support, referrals, facilities access, training, or coordinated community programming.',
-      'This page is built for people looking beyond one-off support toward sustained collaboration.',
+      'Whether you represent an institution, a ministry, a business, or an organisation, we welcome the opportunity to colaborate with you in ways that go beyound a one-time gesture.',
+      'Partnerships with Orange Hat can take many forms-   funding, expertise, in-kind support, referrals, facilities access, training, or coordinated community programming. Whatever you bring to the tabe, we will work together to make it count.',
+      'This for those who are ready to move beyond one-off support and build somehting sustained, intentional, and truely impactful.',
     ],
     highlight: 'Create shared impact with Orange Hat.',
     cta: 'I want to discuss partnership',
+  },
+  {
+    path: '/contact/volunteer',
+    title: 'Volunteer Your Time',
+    label: 'Volunteer',
+    image: '/images/nanna-john.jpg',
+    lead: 'Step into the work directly by offering your time, skills, energy, or presence where it is needed most.',
+    body: [
+      'Volunteers can strengthen any of our programmmes through tutoring, mentoring, logistics support, creative contributions, event service, and practical community engagement.',
+      'This is for someone who doesn\'t just want to say "I care", but is ready to show up and make a difference.',
+    ],
+    highlight: 'Join the work on the ground.',
+    cta: 'I want to volunteer',
+    
   },
   {
     path: '/contact/enquire',
     title: 'Ask A Question',
     label: 'Enquire',
     image: '/images/blessing.jpg',
-    lead: 'Start with a conversation if you want to learn more before choosing how to engage.',
+      lead: 'you do not have to have it all figured out before reching out. If you are still exploring,comparing options, or looking for clearity around a specific programme or need- start with a conversation.',
     body: [
+      'We are happy to help you find the best way forward.',
       'Are still deciding, comparing options, or looking for clarity around a specific program or need?',
     ],
     highlight: 'Get clarity before taking your next step.',

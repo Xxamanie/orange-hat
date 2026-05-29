@@ -75,8 +75,9 @@ Program highlights: `,
     id: 'educational-sponsorship',
     title: 'Comprehensive Educational Sponsorship',
     shortDescription: 'Full-circle support that removes financial barriers to education.',
-    description: `We believe that a brilliant mind should never be limited by an empty pocket. Our sponsorship pathway removes obstacles between a motivated student and meaningful academic progress.`,
+    description: `Our "Total Care" Commitment: Every sponsored student receives practical support that removes barriers to education and helps them stay consistent through the year.
 
+We cover essential learning needs such as tuition support, study materials, monitoring, and ongoing after-school encouragement—so progress becomes realistic, not just hopeful.`,
     image: '/images/asabe.png',
     category: 'Sponsorship',
     targetAge: 'Students',

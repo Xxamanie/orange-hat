@@ -111,9 +111,9 @@ export const contactJourneys: ContactJourney[] = [
     title: 'Sponsor A Child',
     label: 'Sponsor',
     image: '/images/learning center.jpg',
-    lead: 'Wvery child desers the xhance to learn, grow, and thrive.',
+    lead: 'Every child deserves the chance to learn, grow, and thrive.',
     body: [
-      'By sponsoring a child or young person, you provide more then school fees- you open doors through books, supplies, accademic monetoring, and the kind of relational care that keeps a child going even when life is hard.',
+      'By sponsoring a child or young person, you provide more than school fees- you open doors through books, supplies, accademic monitoring, and the kind of relational care that keeps a child going even when life is hard.',
 
       'This is for someone who wants their giving to have a name, a face, and a clear outcome.',
     ],
@@ -141,9 +141,9 @@ export const contactJourneys: ContactJourney[] = [
     image: '/images/joel.jpg',
     lead: 'We belief that lasting change is built through meaningful relationships.',
     body: [
-      'Whether you represent an institution, a ministry, a business, or an organisation, we welcome the opportunity to colaborate with you in ways that go beyound a one-time gesture.',
-      'Partnerships with Orange Hat can take many forms-   funding, expertise, in-kind support, referrals, facilities access, training, or coordinated community programming. Whatever you bring to the tabe, we will work together to make it count.',
-      'This for those who are ready to move beyond one-off support and build somehting sustained, intentional, and truely impactful.',
+      'Whether you represent an institution, a ministry, a business, or an organisation, we welcome the opportunity to collaborate with you in ways that go beyound a one-time gesture.',
+      'Partnerships with Orange Hat can take many forms-   funding, expertise, in-kind support, referrals, facilities access, training, or coordinated community programming. Whatever you bring to the table, we will work together to make it count.',
+      'This for those who are ready to move beyond one-off support and build somehting sustained, intentional, and truly impactful.',
     ],
     highlight: 'Create shared impact with Orange Hat.',
     cta: 'I want to discuss partnership',
@@ -167,10 +167,9 @@ export const contactJourneys: ContactJourney[] = [
     title: 'Ask A Question',
     label: 'Enquire',
     image: '/images/blessing.jpg',
-      lead: 'you do not have to have it all figured out before reching out. If you are still exploring,comparing options, or looking for clearity around a specific programme or need- start with a conversation.',
+      lead: 'You don\'t have to have it all figured out before reaching out. If you\'re still exploring, comparing options, or looking for clarity around a specific programme or need- start with a conversation.',
     body: [
       'We are happy to help you find the best way forward.',
-      'Are still deciding, comparing options, or looking for clarity around a specific program or need?',
     ],
     highlight: 'Get clarity before taking your next step.',
     cta: 'I have a question',

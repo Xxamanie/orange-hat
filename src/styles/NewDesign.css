@@ -79,6 +79,8 @@ body {
 .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; }
 .hamburger span { width: 24px; height: 2px; background: var(--warm-dk); border-radius: 2px; transition: .3s; }
 
+.mobile-menu { display: none; }
+
 /* ── HERO ── */
 .hero,
 #hero {

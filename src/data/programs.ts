@@ -37,7 +37,7 @@ Our curriculum is split into two primary tracks:
 `,
     image: '/images/learning center.jpg',
     category: 'Education',
-    targetAge: 'Children',
+    targetAge: 'Young Adults',
     duration: 'Year-round',
     media: [{ type: 'image', src: '/images/learning center.jpg', caption: 'Learning center classroom activity' }],
   },
@@ -74,10 +74,14 @@ Program highlights: `,
   {
     id: 'educational-sponsorship',
     title: 'Comprehensive Educational Sponsorship',
-    shortDescription: 'Full-circle support that removes financial barriers to education.',
-    description: `Our "Total Care" Commitment: Every sponsored student receives practical support that removes barriers to education and helps them stay consistent through the year.
+    shortDescription: 'Full educational support for students at every level — from primary school through university.',
+    description: `We cover essential learning needs such as tuition support, study materials, monitoring, and ongoing after-school encouragement—so progress becomes realistic, not just hopeful.
 
-We cover essential learning needs such as tuition support, study materials, monitoring, and ongoing after-school encouragement—so progress becomes realistic, not just hopeful.`,
+Basic Education (Primary & Secondary): Every sponsored student receives a complete back-to-school package covering tuition, uniforms, shoes, textbooks, and stationery, so they can walk into school feeling ready and dignified.
+
+Higher Education (University): We walk alongside our university students through their entire academic journey. From tuition and study materials to accommodation, feeding, and transportation — every essential need is taken care of, so they can give their full attention to learning and growing.
+
+Academic Support: We attend Open Days to monitor progress and consult with teachers. Younger students also receive dedicated after-school tutoring and homework help.`,
     image: '/images/asabe.png',
     category: 'Sponsorship',
     targetAge: 'Students',

@@ -90,7 +90,7 @@ const programDetails: Record<string, ProgramDetails> = {
   'comprehensive-educational-sponsorship': {
     list: [
       { strong: 'Basic Education (Primary & Secondary):', text: 'Every sponsored student receives a complete back-to-school package covering; tuition, uniforms, shoes, textbooks, and stationery, so they can walk into school feeling ready and dignified.' },
-      { strong: 'Higher Education (University):', text: 'We walk alongside our university students through their entire academic journey. From tuition and study materials to accommodation, feeding, and transportation — every essential need is taken care of, so they can give their full attention to learning and growing.' },
+      { strong: 'Higher Education (University):', text: 'We walk alongside our university students through their entire academic journey. From tuition and study materials to accommodations, feeding, and transportation — every essential need is taken care of, so they can give their full attention to learning and growing.' },
       { strong: 'Academic Support:', text: 'We attend Open Days to monitor progress and consult with teachers. Younger students also receive dedicated after-school tutoring and homework help.' },
     ],
   },

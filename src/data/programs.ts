@@ -6,13 +6,13 @@ export const programs: Program[] = [
     title: "Lovin' Oven",
     shortDescription: 'A baking skill acquisition program for young women.',
     description: `This three months program empowers young women to achieve financial independence through the art of baking. Our holistic curriculum covers professional baking techniques, essential entrepreneurship, and faith-based financial management. To ensure a successful launch, we provide each graduate with a starter kit of basic baking materials.`,
-    image: "/images/lovin' oven.jpeg",
+    image: "/images/lovin' oven.jpg",
     category: 'Training',
     targetAge: 'Young Women',
     duration: '3 months',
     story:
       '"I never believed I could earn from my passion for baking until Lovin\' Oven trained me. Now I bake for schools and events in my community."',
-    media: [{ type: 'image', src: "/images/lovin' oven.jpeg", caption: "Lovin' Oven training session" }],
+    media: [{ type: 'image', src: "/images/lovin' oven.jpg", caption: "Lovin' Oven training session" }],
   },
   {
     id: 'hwolemen',
@@ -50,7 +50,7 @@ Our curriculum is split into two primary tracks:
 Rooted House is a comprehensive, two-year residential program designed for vulnerable young women, teen mothers, and expectant mothers. We provide more than just a roof; we provide a foundation for a renewed life. Our mission is to transition young women from crisis to confidence through a holistic, Christ-centered approach over twenty-four months of intentional growth.
 
 `,
-    image: '/images/rooted house.jpeg',
+    image: '/images/rooted house.jpg',
     category: 'Support',
     targetAge: 'Young Women',
     duration: 'Residential',

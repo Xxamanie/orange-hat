@@ -21,7 +21,7 @@ export const programs: Program[] = [
     description: `Hwolemen is a comprehensive transformation program dedicated to guiding young men toward a life of purpose, integrity, and self-sufficiency. We believe in nurturing the whole man, which is why our initiative goes beyond surface-level fixes. By integrating intensive mentorship with practical skill acquisition, we provide the tools necessary for sustainable success.
 
 Our holistic approach focuses on:`,
-    image: '/images/wholemen.jpeg',
+    image: '/images/wholemen.jpg',
     category: 'Mentorship',
     targetAge: 'Young Men',
     duration: 'Ongoing',

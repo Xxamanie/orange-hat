@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { programs } from '../data/programs';
 import { DONATION_CONFIG, FEATURE_FLAGS, SOCIAL_LINKS } from '../utils/constants';
+import { PhotoMosaic } from './PhotoMosaic';
 
 export type RoutePath =
   | '/'
@@ -275,10 +276,7 @@ export const HomeHero: React.FC = () => {
 
   return (
     <section id="hero" className="hero fade-in">
-      <div
-        className="hero-bg"
-        style={{ backgroundImage: `url('${withBase('/images/holiday.jpeg')}')` }}
-      ></div>
+      <PhotoMosaic initialImage={withBase('/images/holiday.jpeg')} />
       <div className="hero-content">
         <div className="hero-text">
           <div className="hero-eyebrow">Faith . Purpose . Transformation</div>
@@ -361,7 +359,7 @@ export const PageHero: React.FC<{
   image: string;
 }> = ({ eyebrow, title, lead, image }) => (
   <section className="page-hero fade-in">
-    <div className="page-hero-bg" style={{ backgroundImage: `url('${withBase(image)}')` }}></div>
+    <PhotoMosaic initialImage={withBase(image)} />
     <div className="page-hero-inner">
       <div className="section-tag page-hero-tag">{eyebrow}</div>
       <h1 className="page-hero-title">{title}</h1>

@@ -1,11 +1,13 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { programs } from '../data/programs';
+import { DONATION_CONFIG, FEATURE_FLAGS, SOCIAL_LINKS } from '../utils/constants';
 
 export type RoutePath =
   | '/'
   | '/programs'
   | '/team'
   | '/impact'
+  | '/media'
   | '/contact'
   | '/contact/give'
   | '/contact/volunteer'
@@ -103,6 +105,7 @@ const navItems: Array<{ label: string; path: RoutePath }> = [
   { label: 'Programs', path: '/programs' },
   { label: 'Our Team', path: '/team' },
   { label: 'Impact', path: '/impact' },
+  { label: 'Media', path: '/media' },
   { label: 'Contact', path: '/contact' },
 ];
 
@@ -182,6 +185,10 @@ const isNavItemActive = (currentPath: RoutePath, itemPath: RoutePath) =>
 
 export const routeHref = (path: RoutePath) => (path === '/' ? '#/' : `#${path}`);
 
+const getDonateLink = (): string => {
+  return DONATION_CONFIG.paystackUrl.trim() || 'https://paystack.shop/pay/orange-hat';
+};
+
 export const SiteNav: React.FC<{ currentPath: RoutePath }> = ({ currentPath }) => {
   const [menuOpen, setMenuOpen] = useState(false);
 
@@ -212,7 +219,13 @@ export const SiteNav: React.FC<{ currentPath: RoutePath }> = ({ currentPath }) =
           ))}
         </ul>
 
-        <a href={routeHref('/contact')} className="nav-cta">Donate / Partner</a>
+        <a
+          href={routeHref('/contact')}
+          className="nav-cta"
+          onClick={() => setMenuOpen(false)}
+        >
+          Donate / Partner
+        </a>
 
         <div className="hamburger" onClick={() => setMenuOpen((open) => !open)} aria-label="Menu">
           <span></span><span></span><span></span>
@@ -229,7 +242,13 @@ export const SiteNav: React.FC<{ currentPath: RoutePath }> = ({ currentPath }) =
             {item.label}
           </a>
         ))}
-        <a href={routeHref('/contact')} className="nav-cta">Donate / Partner</a>
+        <a
+          href={routeHref('/contact')}
+          className="nav-cta"
+          onClick={() => setMenuOpen(false)}
+        >
+          Donate / Partner
+        </a>
       </div>
     </>
   );
@@ -250,30 +269,42 @@ export const SiteFooter: React.FC = () => (
   </footer>
 );
 
-export const HomeHero: React.FC = () => (
-  <section id="hero" className="hero fade-in">
-    <div
-      className="hero-bg"
-      style={{ backgroundImage: `url('${withBase('/images/holiday.jpeg')}')` }}
-    ></div>
-    <div className="hero-content">
-      <div className="hero-text">
-        <div className="hero-eyebrow">Faith . Purpose . Transformation</div>
-        <h1 className="hero-h1">
-          Turning Potential<br/>into <em>Purposeful</em><br/>Living
-        </h1>
-        <p className="hero-sub">
-          Orange Hat Childcare Foundation is a faith-based NGO in Nigeria, equipping vulnerable youth and women
-          with the education, skills, and spiritual grounding they need to build dignified, independent lives.
-        </p>
-        <div className="hero-btns">
-          <a href={routeHref('/programs')} className="btn-primary cta-button">Explore Our Programs</a>
-          <a href={routeHref('/contact')} className="btn-ghost">Partner With Us</a>
+export const HomeHero: React.FC = () => {
+  const donationHref = getDonateLink();
+  const isExternalDonation = donationHref.startsWith('http');
+
+  return (
+    <section id="hero" className="hero fade-in">
+      <div
+        className="hero-bg"
+        style={{ backgroundImage: `url('${withBase('/images/holiday.jpeg')}')` }}
+      ></div>
+      <div className="hero-content">
+        <div className="hero-text">
+          <div className="hero-eyebrow">Faith . Purpose . Transformation</div>
+          <h1 className="hero-h1">
+            Turning Potential<br/>into <em>Purposeful</em><br/>Living
+          </h1>
+          <p className="hero-sub">
+            Orange Hat Childcare Foundation is a faith-based NGO in Nigeria, equipping vulnerable youth and women
+            with the education, skills, and spiritual grounding they need to build dignified, independent lives.
+          </p>
+          <div className="hero-btns">
+            <a href={routeHref('/programs')} className="btn-primary cta-button">Explore Our Programs</a>
+            <a
+              href={donationHref}
+              className="btn-ghost"
+              target={isExternalDonation ? '_blank' : undefined}
+              rel={isExternalDonation ? 'noreferrer' : undefined}
+            >
+              Donate Now
+            </a>
+          </div>
         </div>
       </div>
-    </div>
-  </section>
-);
+    </section>
+  );
+};
 
 export const MissionStrip: React.FC = () => (
   <div id="mission-strip" className="fade-in">
@@ -339,8 +370,31 @@ export const PageHero: React.FC<{
   </section>
 );
 
+function getProgramSlides(program: typeof programs[0]): string[] {
+  if (!FEATURE_FLAGS.programSlideshow) return [program.image];
+  const srcs = [program.image, ...(program.media?.filter(m => m.type === 'image').map(m => m.src) ?? [])];
+  return [...new Set(srcs)];
+}
+
 export const ProgramsSection: React.FC = () => {
   const [activeProgramId, setActiveProgramId] = useState<string | null>(null);
+  const [hoveredId, setHoveredId] = useState<string | null>(null);
+  const [slideIndex, setSlideIndex] = useState(0);
+  const timerRef = useRef<ReturnType<typeof setInterval> | null>(null);
+
+  useEffect(() => {
+    if (timerRef.current) clearInterval(timerRef.current);
+    setSlideIndex(0);
+    if (!FEATURE_FLAGS.programSlideshow || !hoveredId) return;
+    const prog = programs.find(p => p.id === hoveredId);
+    if (!prog) return;
+    const slides = getProgramSlides(prog);
+    if (slides.length <= 1) return;
+    timerRef.current = setInterval(() => {
+      setSlideIndex(i => (i + 1) % slides.length);
+    }, 1500);
+    return () => { if (timerRef.current) clearInterval(timerRef.current); };
+  }, [hoveredId]);
 
   const renderProgramContent = (program: typeof programs[0]) => {
     const details = programDetails[program.id];
@@ -388,6 +442,8 @@ export const ProgramsSection: React.FC = () => {
             <article
               className={`program-showcase-card pillar-card ${isActive ? 'is-active' : ''}`}
               key={program.id}
+              onMouseEnter={() => setHoveredId(program.id)}
+              onMouseLeave={() => setHoveredId(null)}
             >
               <button
                 type="button"
@@ -397,11 +453,14 @@ export const ProgramsSection: React.FC = () => {
                 aria-controls={`program-details-${program.id}`}
               >
                 <div className="program-showcase-media">
-                  <img
-                    src={encodeURI(withBase(program.image))}
-                    alt={program.title}
-                    className="program-showcase-image"
-                  />
+                  {getProgramSlides(program).map((src, i) => (
+                    <img
+                      key={src}
+                      src={encodeURI(withBase(src))}
+                      alt={program.title}
+                      className={`program-showcase-image program-slide${(hoveredId === program.id ? slideIndex === i : i === 0) ? ' is-active' : ''}`}
+                    />
+                  ))}
                   <div className="program-showcase-overlay" />
                   <div className="program-showcase-glow" />
                   <div className="program-showcase-copy">
@@ -430,6 +489,117 @@ export const ProgramsSection: React.FC = () => {
           );
         })}
       </div>
+    </section>
+  );
+};
+
+type InstagramPost = {
+  id: string;
+  shortcode: string;
+  caption: string;
+  mediaUrl: string;
+  thumbnailUrl?: string;
+  permalink: string;
+  isVideo: boolean;
+};
+
+export const InstagramFeedSection: React.FC = () => {
+  const [posts, setPosts] = useState<InstagramPost[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
+
+  useEffect(() => {
+    let isMounted = true;
+
+    const loadPosts = async () => {
+      try {
+        const response = await fetch('/api/instagram', { cache: 'no-store' });
+        if (!response.ok) {
+          throw new Error('Unable to load Instagram posts');
+        }
+
+        const data = (await response.json()) as { posts?: InstagramPost[]; message?: string };
+        if (!isMounted) return;
+
+        if (data.posts && data.posts.length > 0) {
+          setPosts(data.posts);
+          setError(null);
+        } else {
+          setPosts([]);
+          setError(data.message || 'No posts are available yet.');
+        }
+      } catch (err) {
+        if (!isMounted) return;
+        setError(err instanceof Error ? err.message : 'Unable to load Instagram posts');
+      } finally {
+        if (isMounted) setLoading(false);
+      }
+    };
+
+    loadPosts();
+    const interval = window.setInterval(loadPosts, 1000 * 60 * 15);
+
+    return () => {
+      isMounted = false;
+      window.clearInterval(interval);
+    };
+  }, []);
+
+  return (
+    <section id="media" className="fade-in">
+      <div className="programs-header reveal">
+        <div className="section-tag">Latest Updates</div>
+        <h2 className="section-h2">Instagram <em>Highlights</em></h2>
+        <p className="section-lead">
+          Fresh moments from the Orange Hat community, refreshed automatically whenever the Instagram profile is updated.
+        </p>
+      </div>
+
+      {loading ? (
+        <div className="program-card-grid reveal">
+          {Array.from({ length: 3 }).map((_, index) => (
+            <div key={index} className="program-showcase-card pillar-card is-active" style={{ minHeight: 260 }}>
+              <div className="program-showcase-media" style={{ background: 'linear-gradient(135deg, #f5d7b8, #f8efe7)' }} />
+            </div>
+          ))}
+        </div>
+      ) : error ? (
+        <div className="program-card-grid reveal">
+          <div className="program-showcase-card pillar-card is-active" style={{ minHeight: 180, padding: 24, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+            <p style={{ textAlign: 'center', maxWidth: 520 }}>{error}</p>
+          </div>
+        </div>
+      ) : (
+        <div className="program-card-grid reveal">
+          {posts.map((post) => (
+            <article key={post.id} className="program-showcase-card pillar-card is-active" style={{ minHeight: 320 }}>
+              <div className="program-showcase-media" style={{ overflow: 'hidden' }}>
+                <img
+                  src={post.thumbnailUrl || post.mediaUrl}
+                  alt={post.caption || 'Instagram post'}
+                  className="program-showcase-image"
+                  style={{ objectFit: 'cover' }}
+                />
+                <div className="program-showcase-overlay" />
+                <div className="program-showcase-glow" />
+                <div className="program-showcase-copy" style={{ maxWidth: '92%' }}>
+                  <span className="program-showcase-category">{post.isVideo ? 'Video' : 'Photo'}</span>
+                  <h3>{post.caption || 'Orange Hat community moment'}</h3>
+                  <a
+                    href={post.permalink || SOCIAL_LINKS.instagram}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="nav-cta"
+                    style={{ display: 'inline-block', marginTop: 12, fontSize: '0.78rem', padding: '8px 16px' }}
+                  >
+                    View on Instagram
+                  </a>
+                </div>
+              </div>
+            </article>
+          ))}
+        </div>
+      )}
     </section>
   );
 };
@@ -495,6 +665,9 @@ export const ContactSection: React.FC = () => {
       <div className="program-card-grid reveal">
         {contactJourneys.map((journey) => {
           const isActive = activePath === journey.path;
+          const donationHref = getDonateLink();
+          const isExternalDonation = donationHref.startsWith('http');
+          const showDonateButton = journey.path === '/contact/give' || journey.path === '/contact/sponsor';
 
           return (
             <article
@@ -544,7 +717,7 @@ export const ContactSection: React.FC = () => {
                   </div>
                 </div>
 
-                <div style={{ marginTop: 18 }}>
+                <div style={{ marginTop: 18, display: 'flex', flexWrap: 'wrap', gap: 12 }}>
                   <a
                     className="form-submit"
                     href={routeHref(journey.path)}
@@ -552,6 +725,17 @@ export const ContactSection: React.FC = () => {
                   >
                     Continue to this route -&gt;
                   </a>
+                  {showDonateButton && (
+                    <a
+                      className="form-submit"
+                      href={donationHref}
+                      target={isExternalDonation ? '_blank' : undefined}
+                      rel={isExternalDonation ? 'noreferrer' : undefined}
+                      style={{ textDecoration: 'none', display: 'inline-block', background: 'var(--orange)' }}
+                    >
+                      Donate Now -&gt;
+                    </a>
+                  )}
                 </div>
               </div>
             </article>
@@ -565,6 +749,7 @@ export const ContactSection: React.FC = () => {
 
 export const ContactDetailSection: React.FC<{ journeyPath: ContactJourney['path'] }> = ({ journeyPath }) => {
   const journey = contactJourneys.find((item) => item.path === journeyPath) ?? contactJourneys[0];
+  const showDonateButton = journey.path === '/contact/give' || journey.path === '/contact/sponsor';
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -644,6 +829,22 @@ export const ContactDetailSection: React.FC<{ journeyPath: ContactJourney['path'
             </div>
 
             <div className="contact-route-form-wrap">
+              {showDonateButton && (
+                <div className="donation-form contact-route-form">
+                  <h3>Make a donation</h3>
+                  <p>Choose your donation amount and pay securely on Paystack.</p>
+                  <a
+                    href={getDonateLink()}
+                    className="form-submit donation-checkout-link"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    style={{ marginTop: 18 }}
+                  >
+                    Donate with Paystack &rarr;
+                  </a>
+                </div>
+              )}
+
               <form onSubmit={handleSubmit} className="contact-route-form">
                 <h3>{journey.cta}</h3>
                 <div className="contact-route-grid">

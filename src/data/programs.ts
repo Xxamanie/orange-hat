@@ -69,7 +69,7 @@ Program highlights: `,
     category: 'Education',
     targetAge: 'Children',
     duration: '3 days/week',
-    media: [{ type: 'image', src: '/images/asabe.png', caption: 'After-school reading and activity circle' }],
+    media: [{ type: 'image', src: '/images/after.jpg', caption: 'After-school reading and activity circle' }, { type: 'image', src: '/images/after1.jpg', caption: 'After-school reading and activity circle', }, {type: 'image', src: '/images/after2.jpg', caption: 'After-school reading and activity circle'}, {type: 'image', src: '/images/after3.jpg', caption: 'After-school reading and activity circle'}, {type: 'image', src: '/images/after4.jpg', caption: 'After-school reading and activity circle'}, {type: 'image', src: '/images/after5.jpg', caption: 'After-school reading and activity circle'}, {type: 'image', src: '/images/after6.jpg', caption: 'After-school reading and activity circle'}, {type: 'image', src: '/images/after7.jpg', caption: 'After-school reading and activity circle'}, {type: 'image', src: '/images/after8.jpg', caption: 'After-school reading and activity circle'}, {type: 'image', src: '/images/after9.jpg', caption: 'After-school reading and activity circle'}, {type: 'image', src: '/images/after10.jpg', caption: 'After-school reading and activity circle'}],
   },
   {
     id: 'educational-sponsorship',

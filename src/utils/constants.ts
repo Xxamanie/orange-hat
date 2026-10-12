@@ -1,5 +1,9 @@
 // Application constants and configuration
 
+export const FEATURE_FLAGS = {
+  programSlideshow: import.meta.env.VITE_ENABLE_PROGRAM_SLIDESHOW === 'true',
+};
+
 export const APP_CONFIG = {
   name: import.meta.env.VITE_ORG_NAME || 'Orange Hat Childcare Foundation',
   email: import.meta.env.VITE_CONTACT_EMAIL || 'info@orange-hat.org',
@@ -24,7 +28,9 @@ export const SOCIAL_LINKS = {
 };
 
 export const DONATION_CONFIG = {
-  paystackUrl: import.meta.env.VITE_DONATION_URL || 'https://paystack.com/pay/your-link',
+  // Public keys are safe to include in the browser; never use a secret key here.
+  publicKey: (import.meta.env.VITE_PAYSTACK_PUBLIC_KEY || 'pk_live_612ce44ba865ba2c0fdc9aefd4f96891145bf6d0').trim(),
+  paystackUrl: import.meta.env.VITE_DONATION_URL || 'https://paystack.shop/pay/orange-hat',
   minAmount: 100, // Minimum donation in Naira
   maxAmount: 1000000, // Maximum donation in Naira
   defaultAmount: 5000,

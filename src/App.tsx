@@ -4,6 +4,7 @@ import ContactPage from './pages/ContactPage';
 import ContactJourneyPage from './pages/ContactJourneyPage';
 import HomePage from './pages/HomePage';
 import ImpactPage from './pages/ImpactPage';
+import MediaPage from './pages/MediaPage';
 import ProgramsPage from './pages/ProgramsPage';
 import TeamPage from './pages/TeamPage';
 import './styles/NewDesign.css';
@@ -15,6 +16,7 @@ const normalizeRoute = (hash: string): RoutePath => {
     case '/programs':
     case '/team':
     case '/impact':
+    case '/media':
     case '/contact':
     case '/contact/give':
     case '/contact/volunteer':
@@ -52,6 +54,8 @@ const App: React.FC = () => {
         return <TeamPage />;
       case '/impact':
         return <ImpactPage />;
+      case '/media':
+        return <MediaPage />;
       case '/contact':
         return <ContactPage />;
       case '/contact/give':

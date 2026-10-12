@@ -41,8 +41,25 @@ VITE_FACEBOOK_URL=https://facebook.com/orangehatchildcare
 VITE_INSTAGRAM_URL=https://instagram.com/orangehatchildcare
 VITE_YOUTUBE_URL=https://youtube.com/@orangehatchildcare
 VITE_TWITTER_URL=https://twitter.com/orangehatchildcare
-VITE_DONATION_URL=https://paystack.com/pay/your-actual-link
+VITE_DONATION_URL=https://paystack.shop/pay/orange-hat
+VITE_PAYSTACK_PUBLIC_KEY=pk_live_612ce44ba865ba2c0fdc9aefd4f96891145bf6d0
 ```
+
+Donation buttons open the Paystack-hosted donation page. See the current donation flow section below for payment configuration.
+
+### Current donation flow: Paystack link
+
+All Donate buttons currently open `https://paystack.shop/pay/orange-hat`. Set `VITE_DONATION_URL` to this URL for production builds. Donors enter their amount and complete payment on Paystack; configure the Paystack page to allow custom amounts. This frontend change still needs deployment to update the live website. Until then, share the Paystack link directly with donors.
+
+### Saved on-site donation checkout (inactive)
+
+The following describes the saved `DonationForm` component, which is currently not rendered. It can be reconnected later.
+
+Donate buttons now open the Give page. Donors choose a preset or custom NGN amount and enter an email for their receipt, then Paystack InlineJS opens checkout. The hosted payment page remains available as a backup. Set both payment variables above in the production build environment and redeploy. The supplied public key and payment-page URL are also defaults in `src/utils/constants.ts`; environment variables override them, so update any old donation URL. Never expose a Paystack secret key in the frontend.
+
+The form accepts one-time gifts from NGN 100 to NGN 1,000,000, converts amounts to kobo, and handles cancellation, loading failures, and duplicate clicks. The browser completion callback displays a thank-you message and reference only; it does not create a verified donation record. Confirm payments using Paystack receipts and the Paystack dashboard. A future donation ledger must verify transactions on the server or use authenticated webhooks.
+
+For development payment tests, override the public key with `pk_test_...`. Restore the live key before production deployment. Check preset/custom amounts and checkout cancellation without making a real donation.
 
 ### Step 4: Custom Domain Setup
 1. **In Cloudflare Pages** → Custom domains

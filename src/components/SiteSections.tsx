@@ -201,7 +201,7 @@ export const SiteNav: React.FC<{ currentPath: RoutePath }> = ({ currentPath }) =
       <nav className="navbar">
         <a className="logo-wrap" href={routeHref('/')}>
           <div className="logo-circle">
-            <img src={withBase('/images/logo.png')} alt="Orange Hat Childcare Foundation logo" />
+            <img src={withBase('/images/logo.jpeg')} alt="Orange Hat Childcare Foundation logo" />
           </div>
           <div className="logo-text">
             Orange Hat Childcare Foundation
